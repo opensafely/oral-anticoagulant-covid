@@ -1,12 +1,824 @@
-version: '3.0'
+version: "3.0"
 
 expectations:
-  population_size: 1000
+  population_size: 100000
 
 actions:
-
-  generate_study_population:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition
+  generate_cohort:
+    run: cohortextractor:latest generate_cohort 
     outputs:
       highly_sensitive:
-        cohort: output/input.csv
+        cohort1: output/input_af.csv
+        cohort2: output/input_af_population_flow_chart.csv
+        cohort3: output/input_general_population.csv
+        cohort4: output/input_general_population_flow_chart.csv
+
+  # Flowchart for AF population
+  flowchart_af:
+    run: stata-mp:latest analysis/flow_chart_af_population.do af_population_flowchart
+    needs: [generate_cohort]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/flow_chart_af_population.log
+ 
+  # Flowchart for general population (before matching)
+  flowchart_general_population:
+    run: stata-mp:latest analysis/flow_chart_general_population.do general_population_flowchart
+    needs: [generate_cohort]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/flow_chart_general_population.log
+
+  # Main Analysis 1
+  # Objective 1: compare AF treated people with AF non-treated people
+  format_dataset_af_oac:
+    run: stata-mp:latest analysis/00_cr_create_analysis_dataset.do af_oac input_af
+    needs: [generate_cohort]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/00_cr_create_analysis_dataset.log
+      highly_sensitive:
+        data: "output/oac_tempdata/format_dataset.dta"
+
+  create_dataset_af_oac:
+    run: stata-mp:latest analysis/01_cr_create_exposure_outcome_af.do af_oac
+    needs: [format_dataset_af_oac]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/01_cr_create_exposure_outcome_af.log
+      highly_sensitive:
+        data: "output/oac_tempdata/cr_dataset_af.dta"
+
+  # Export case dataset for matching
+  02ai_exportfile_matching:
+    run: stata-mp:latest analysis/02ai_exportfile_matching.do af_oac
+    needs: [create_dataset_af_oac]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/02ai_exportfile_matching.log
+      highly_sensitive:
+        data1: "output/input_af_oac.csv"
+        data2: "output/input_af_oac.dta"
+               
+  # Primary Outcomes: ONS COVID-19 death
+  02aii_cr_create_population_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/02aii_cr_create_population.do onscoviddeath af_oac
+    needs: [create_dataset_af_oac]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/02aii_cr_create_population_onscoviddeath.log
+      highly_sensitive:
+        data1: "output/oac_tempdata/analysis_dataset_onscoviddeath.dta"
+        data2: "output/oac_tempdata/analysis_dataset_STSET_onscoviddeath.dta"
+
+  03_an_checks_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/03_an_checks.do onscoviddeath af_oac
+    needs: [02aii_cr_create_population_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/03_an_checks_onscoviddeath.log
+  
+  04_an_descriptive_table_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/04_an_descriptive_table.do onscoviddeath af_oac
+    needs: [02aii_cr_create_population_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/04_an_descriptive_table_onscoviddeath.log
+        table: "output/oac_tabfig/table1_onscoviddeath.txt"
+
+  05a_an_models_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/05a_an_models.do onscoviddeath af_oac
+    needs: [02aii_cr_create_population_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/05a_an_models_onscoviddeath.log
+        table: "output/oac_tabfig/table2_onscoviddeath.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/onscoviddeath_univar.ster"
+        data2: "output/oac_tempdata/onscoviddeath_multivar1.ster"
+        data3: "output/oac_tempdata/onscoviddeath_multivar2.ster"
+        data4: "output/oac_tempdata/onscoviddeath_multivar3.ster"
+
+  06a_an_models_ethnicity_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/06a_an_models_ethnicity.do onscoviddeath af_oac
+    needs: [02aii_cr_create_population_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/06a_an_models_ethnicity_onscoviddeath.log
+        table: "output/oac_tabfig/table3_onscoviddeath.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/onscoviddeath_univar_ethn.ster"
+        data2: "output/oac_tempdata/onscoviddeath_multivar1_ethn.ster"
+        data3: "output/oac_tempdata/onscoviddeath_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/onscoviddeath_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/onscoviddeath_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/onscoviddeath_multivar3_withoutethn.ster"
+
+  07_an_model_explore_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/07_an_model_explore.do onscoviddeath af_oac
+    needs: [02aii_cr_create_population_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/07_an_model_explore_onscoviddeath.log
+        table: "output/oac_tabfig/table4_onscoviddeath.txt"
+
+  08a_an_model_checks_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/08a_an_model_checks.do onscoviddeath af_oac
+    needs: [02aii_cr_create_population_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/08a_an_model_checks_onscoviddeath.log
+        fig1: "output/oac_tabfig/onscoviddeath_schoenplot1.svg"
+        fig2: "output/oac_tabfig/onscoviddeath_schoenplot2.svg"
+        fig3: "output/oac_tabfig/onscoviddeath_schoenplot3.svg"
+        fig4: "output/oac_tabfig/onscoviddeath_schoenplot4.svg"
+        table1: "output/oac_tabfig/table5_onscoviddeath.txt"
+        fig5: "output/oac_tabfig/onscoviddeath_schoenplot1_completecase.svg"
+        fig6: "output/oac_tabfig/onscoviddeath_schoenplot2_completecase.svg"
+        fig7: "output/oac_tabfig/onscoviddeath_schoenplot3_completecase_ethn.svg"
+        fig8: "output/oac_tabfig/onscoviddeath_schoenplot3_completecase.svg"
+        fig9: "output/oac_tabfig/onscoviddeath_schoenplot4_completecase_ethn.svg"
+        fig10: "output/oac_tabfig/onscoviddeath_schoenplot4_completecase.svg"
+        table2: "output/oac_tabfig/table6_onscoviddeath.txt"
+
+  09a_an_models_plot_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/09a_an_models_plot.do onscoviddeath af_oac 3 0.5 0.1
+    needs: [02aii_cr_create_population_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/09a_an_models_plot_onscoviddeath.log
+        fig1: "output/oac_tabfig/adj_curves_onscoviddeath.svg"
+        fig2: "output/oac_tabfig/diff_curves_onscoviddeath.svg"
+
+  # Primary Outcomes: COVID-19 hospital admission
+  02aii_cr_create_population_af_oac_admitcovid:
+    run: stata-mp:latest analysis/02aii_cr_create_population.do admitcovid af_oac
+    needs: [create_dataset_af_oac]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/02aii_cr_create_population_admitcovid.log
+      highly_sensitive:
+        data1: "output/oac_tempdata/analysis_dataset_admitcovid.dta"
+        data2: "output/oac_tempdata/analysis_dataset_STSET_admitcovid.dta"
+
+  03_an_checks_af_oac_admitcovid:
+    run: stata-mp:latest analysis/03_an_checks.do admitcovid af_oac
+    needs: [02aii_cr_create_population_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/03_an_checks_admitcovid.log
+
+  05a_an_models_af_oac_admitcovid:
+    run: stata-mp:latest analysis/05a_an_models.do admitcovid af_oac
+    needs: [02aii_cr_create_population_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/05a_an_models_admitcovid.log
+        table: "output/oac_tabfig/table2_admitcovid.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/admitcovid_univar.ster"
+        data2: "output/oac_tempdata/admitcovid_multivar1.ster"
+        data3: "output/oac_tempdata/admitcovid_multivar2.ster"
+        data4: "output/oac_tempdata/admitcovid_multivar3.ster"
+
+  06a_an_models_ethnicity_af_oac_admitcovid:
+    run: stata-mp:latest analysis/06a_an_models_ethnicity.do admitcovid af_oac
+    needs: [02aii_cr_create_population_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/06a_an_models_ethnicity_admitcovid.log
+        table: "output/oac_tabfig/table3_admitcovid.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/admitcovid_univar_ethn.ster"
+        data2: "output/oac_tempdata/admitcovid_multivar1_ethn.ster"
+        data3: "output/oac_tempdata/admitcovid_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/admitcovid_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/admitcovid_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/admitcovid_multivar3_withoutethn.ster"
+
+  07_an_model_explore_af_oac_admitcovid:
+    run: stata-mp:latest analysis/07_an_model_explore.do admitcovid af_oac
+    needs: [02aii_cr_create_population_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/07_an_model_explore_admitcovid.log
+        table: "output/oac_tabfig/table4_admitcovid.txt"
+
+  08a_an_model_checks_af_oac_admitcovid:
+    run: stata-mp:latest analysis/08a_an_model_checks.do admitcovid af_oac
+    needs: [02aii_cr_create_population_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/08a_an_model_checks_admitcovid.log
+        fig1: "output/oac_tabfig/admitcovid_schoenplot1.svg"
+        fig2: "output/oac_tabfig/admitcovid_schoenplot2.svg"
+        fig3: "output/oac_tabfig/admitcovid_schoenplot3.svg"
+        fig4: "output/oac_tabfig/admitcovid_schoenplot4.svg"
+        table1: "output/oac_tabfig/table5_admitcovid.txt"
+        fig5: "output/oac_tabfig/admitcovid_schoenplot1_completecase.svg"
+        fig6: "output/oac_tabfig/admitcovid_schoenplot2_completecase.svg"
+        fig7: "output/oac_tabfig/admitcovid_schoenplot3_completecase_ethn.svg"
+        fig8: "output/oac_tabfig/admitcovid_schoenplot3_completecase.svg"
+        fig9: "output/oac_tabfig/admitcovid_schoenplot4_completecase_ethn.svg"
+        fig10: "output/oac_tabfig/admitcovid_schoenplot4_completecase.svg"
+        table2: "output/oac_tabfig/table6_admitcovid.txt"
+
+  09a_an_models_plot_af_oac_admitcovid:
+    run: stata-mp:latest analysis/09a_an_models_plot.do admitcovid af_oac 2 0.5 0.1
+    needs: [02aii_cr_create_population_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/09a_an_models_plot_admitcovid.log
+        fig1: "output/oac_tabfig/adj_curves_admitcovid.svg"
+        fig2: "output/oac_tabfig/diff_curves_admitcovid.svg"
+
+  # Exploratory Outcomes: COVID-19 test
+  02aii_cr_create_population_af_oac_covidtest:
+    run: stata-mp:latest analysis/02aii_cr_create_population.do covidtest af_oac
+    needs: [create_dataset_af_oac]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/02aii_cr_create_population_covidtest.log
+      highly_sensitive:
+        data1: "output/oac_tempdata/analysis_dataset_covidtest.dta"
+        data2: "output/oac_tempdata/analysis_dataset_STSET_covidtest.dta"
+
+  03_an_checks_af_oac_covidtest:
+    run: stata-mp:latest analysis/03_an_checks.do covidtest af_oac
+    needs: [02aii_cr_create_population_af_oac_covidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/03_an_checks_covidtest.log
+
+  05a_an_models_af_oac_covidtest:
+    run: stata-mp:latest analysis/05a_an_models.do covidtest af_oac
+    needs: [02aii_cr_create_population_af_oac_covidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/05a_an_models_covidtest.log
+        table: "output/oac_tabfig/table2_covidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/covidtest_univar.ster"
+        data2: "output/oac_tempdata/covidtest_multivar1.ster"
+        data3: "output/oac_tempdata/covidtest_multivar2.ster"
+        data4: "output/oac_tempdata/covidtest_multivar3.ster"
+
+  06a_an_models_ethnicity_af_oac_covidtest:
+    run: stata-mp:latest analysis/06a_an_models_ethnicity.do covidtest af_oac
+    needs: [02aii_cr_create_population_af_oac_covidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/06a_an_models_ethnicity_covidtest.log
+        table: "output/oac_tabfig/table3_covidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/covidtest_univar_ethn.ster"
+        data2: "output/oac_tempdata/covidtest_multivar1_ethn.ster"
+        data3: "output/oac_tempdata/covidtest_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/covidtest_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/covidtest_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/covidtest_multivar3_withoutethn.ster"
+
+  08a_an_model_checks_af_oac_covidtest:
+    run: stata-mp:latest analysis/08a_an_model_checks.do covidtest af_oac
+    needs: [02aii_cr_create_population_af_oac_covidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/08a_an_model_checks_covidtest.log
+        fig1: "output/oac_tabfig/covidtest_schoenplot1.svg"
+        fig2: "output/oac_tabfig/covidtest_schoenplot2.svg"
+        fig3: "output/oac_tabfig/covidtest_schoenplot3.svg"
+        fig4: "output/oac_tabfig/covidtest_schoenplot4.svg"
+        table1: "output/oac_tabfig/table5_covidtest.txt"
+        fig5: "output/oac_tabfig/covidtest_schoenplot1_completecase.svg"
+        fig6: "output/oac_tabfig/covidtest_schoenplot2_completecase.svg"
+        fig7: "output/oac_tabfig/covidtest_schoenplot3_completecase_ethn.svg"
+        fig8: "output/oac_tabfig/covidtest_schoenplot3_completecase.svg"
+        fig9: "output/oac_tabfig/covidtest_schoenplot4_completecase_ethn.svg"
+        fig10: "output/oac_tabfig/covidtest_schoenplot4_completecase.svg"
+        table2: "output/oac_tabfig/table6_covidtest.txt"
+
+  09a_an_models_plot_af_oac_covidtest:
+    run: stata-mp:latest analysis/09a_an_models_plot.do covidtest af_oac 3 20 1
+    needs: [02aii_cr_create_population_af_oac_covidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/09a_an_models_plot_covidtest.log
+        fig1: "output/oac_tabfig/adj_curves_covidtest.svg"
+        fig2: "output/oac_tabfig/diff_curves_covidtest.svg"
+
+  # Exploratory Outcomes: Positive COVID test
+  02aii_cr_create_population_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/02aii_cr_create_population.do positivecovidtest af_oac
+    needs: [create_dataset_af_oac]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/02aii_cr_create_population_positivecovidtest.log
+      highly_sensitive:
+        data1: "output/oac_tempdata/analysis_dataset_positivecovidtest.dta"
+        data2: "output/oac_tempdata/analysis_dataset_STSET_positivecovidtest.dta"
+
+  03_an_checks_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/03_an_checks.do positivecovidtest af_oac
+    needs: [02aii_cr_create_population_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/03_an_checks_positivecovidtest.log
+
+  05a_an_models_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/05a_an_models.do positivecovidtest af_oac
+    needs: [02aii_cr_create_population_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/05a_an_models_positivecovidtest.log
+        table: "output/oac_tabfig/table2_positivecovidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/positivecovidtest_univar.ster"
+        data2: "output/oac_tempdata/positivecovidtest_multivar1.ster"
+        data3: "output/oac_tempdata/positivecovidtest_multivar2.ster"
+        data4: "output/oac_tempdata/positivecovidtest_multivar3.ster"
+
+  06a_an_models_ethnicity_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/06a_an_models_ethnicity.do positivecovidtest af_oac
+    needs: [02aii_cr_create_population_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/06a_an_models_ethnicity_positivecovidtest.log
+        table: "output/oac_tabfig/table3_positivecovidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/positivecovidtest_univar_ethn.ster"
+        data2: "output/oac_tempdata/positivecovidtest_multivar1_ethn.ster"
+        data3: "output/oac_tempdata/positivecovidtest_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/positivecovidtest_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/positivecovidtest_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/positivecovidtest_multivar3_withoutethn.ster"
+
+  08a_an_model_checks_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/08a_an_model_checks.do positivecovidtest af_oac
+    needs: [02aii_cr_create_population_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/08a_an_model_checks_positivecovidtest.log
+        fig1: "output/oac_tabfig/positivecovidtest_schoenplot1.svg"
+        fig2: "output/oac_tabfig/positivecovidtest_schoenplot2.svg"
+        fig3: "output/oac_tabfig/positivecovidtest_schoenplot3.svg"
+        fig4: "output/oac_tabfig/positivecovidtest_schoenplot4.svg"
+        table1: "output/oac_tabfig/table5_positivecovidtest.txt"
+        fig5: "output/oac_tabfig/positivecovidtest_schoenplot1_completecase.svg"
+        fig6: "output/oac_tabfig/positivecovidtest_schoenplot2_completecase.svg"
+        fig7: "output/oac_tabfig/positivecovidtest_schoenplot3_completecase_ethn.svg"
+        fig8: "output/oac_tabfig/positivecovidtest_schoenplot3_completecase.svg"
+        fig9: "output/oac_tabfig/positivecovidtest_schoenplot4_completecase_ethn.svg"
+        fig10: "output/oac_tabfig/positivecovidtest_schoenplot4_completecase.svg"
+        table2: "output/oac_tabfig/table6_positivecovidtest.txt"
+
+  09a_an_models_plot_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/09a_an_models_plot.do positivecovidtest af_oac 3 2 0.5
+    needs: [02aii_cr_create_population_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/09a_an_models_plot_positivecovidtest.log
+        fig1: "output/oac_tabfig/adj_curves_positivecovidtest.svg"
+        fig2: "output/oac_tabfig/diff_curves_positivecovidtest.svg"
+
+  11a_an_models_af_oac:
+    run: stata-mp:latest analysis/11a_an_models.do af_oac
+    needs: [02aii_cr_create_population_af_oac_onscoviddeath, 02aii_cr_create_population_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/11a_an_models.log
+        table: "output/oac_tabfig/table8.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/11a_admitcovid_multivar2.ster"
+        data2: "output/oac_tempdata/11a_admitcovid_multivar3.ster"
+        data3: "output/oac_tempdata/11a_onscoviddeath_multivar2.ster"
+        data4: "output/oac_tempdata/11a_onscoviddeath_multivar3.ster"
+
+  12a_an_models_ethnicity_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/12a_an_models_ethnicity.do positivecovidtest af_oac
+    needs: [02aii_cr_create_population_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/12a_an_models_ethnicity_positivecovidtest.log
+        table: "output/oac_tabfig/table9_positivecovidtest.txt"
+      highly_sensitive:
+        data3: "output/oac_tempdata/12a_positivecovidtest_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/12a_positivecovidtest_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/12a_positivecovidtest_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/12a_positivecovidtest_multivar3_withoutethn.ster"
+
+# Main Analysis 3
+# Objective 1: compare AF treated people with general population
+  matching:
+    run: python:latest python analysis/match_running.py
+    needs: [generate_cohort, 02ai_exportfile_matching]
+    outputs:
+      moderately_sensitive:
+        log: output/matching_report_af_gen_pop.txt
+      highly_sensitive:
+        data1: "output/matched_cases_af_gen_pop.csv"
+        data2: "output/matched_matches_af_gen_pop.csv"
+
+  format_dataset_af_match:
+    run: stata-mp:latest analysis/00_cr_create_analysis_dataset.do af_match matched_matches_af_gen_pop
+    needs: [generate_cohort, matching]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_match_log/00_cr_create_analysis_dataset.log
+      highly_sensitive:
+        data: "output/oac_match_tempdata/format_dataset.dta"
+
+  create_dataset_af_match:
+    run: stata-mp:latest analysis/01c_cr_create_exposure_outcome_af_match.do af_match
+    needs: [format_dataset_af_match, matching]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_match_log/01c_cr_create_exposure_outcome_af_match.log
+      highly_sensitive:
+        data: "output/oac_match_tempdata/cr_dataset_af.dta"
+
+  # Sensitivity Analysis 1
+  # Remove people with antiplatelets
+
+  # Primary Outcomes: ONS COVID-19 death
+  SA1_02a_cr_create_population_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/SA1_02a_cr_create_population.do onscoviddeath SA1_af_oac
+    needs: [02aii_cr_create_population_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/SA1_02a_cr_create_population_onscoviddeath.log
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/analysis_dataset_onscoviddeath.dta"
+        data2: "output/oac_tempdata/sens_analysis_1/analysis_dataset_STSET_onscoviddeath.dta"
+
+  SA1_05a_an_models_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/05a_an_models.do onscoviddeath SA1_af_oac
+    needs: [SA1_02a_cr_create_population_af_oac_onscoviddeath, 05a_an_models_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/05a_an_models_onscoviddeath.log
+        table: "output/oac_tabfig/sens_analysis_1/table2_onscoviddeath.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/onscoviddeath_univar.ster"
+        data2: "output/oac_tempdata/sens_analysis_1/onscoviddeath_multivar1.ster"
+        data3: "output/oac_tempdata/sens_analysis_1/onscoviddeath_multivar2.ster"
+        data4: "output/oac_tempdata/sens_analysis_1/onscoviddeath_multivar3.ster"
+
+  SA1_11a_an_models_af_oac:
+    run: stata-mp:latest analysis/SA1_11a_an_models.do SA1_af_oac
+    needs: [SA1_02a_cr_create_population_af_oac_onscoviddeath, 05a_an_models_af_oac_onscoviddeath, SA1_02a_cr_create_population_af_oac_admitcovid, 05a_an_models_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/SA1_11a_an_models.log
+        table: "output/oac_tabfig/sens_analysis_1/table4.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/SA1_11a_admitcovid_multivar2.ster"
+        data2: "output/oac_tempdata/sens_analysis_1/SA1_11a_admitcovid_multivar3.ster"
+        data3: "output/oac_tempdata/sens_analysis_1/SA1_11a_onscoviddeath_multivar2.ster"
+        data4: "output/oac_tempdata/sens_analysis_1/SA1_11a_onscoviddeath_multivar3.ster"
+
+  SA1_06a_an_models_ethnicity_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/06a_an_models_ethnicity.do onscoviddeath SA1_af_oac
+    needs: [SA1_02a_cr_create_population_af_oac_onscoviddeath, 06a_an_models_ethnicity_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/06a_an_models_ethnicity_onscoviddeath.log
+        table: "output/oac_tabfig/sens_analysis_1/table3_onscoviddeath.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/onscoviddeath_univar_ethn.ster"
+        data2: "output/oac_tempdata/sens_analysis_1/onscoviddeath_multivar1_ethn.ster"
+        data3: "output/oac_tempdata/sens_analysis_1/onscoviddeath_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/sens_analysis_1/onscoviddeath_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/sens_analysis_1/onscoviddeath_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/sens_analysis_1/onscoviddeath_multivar3_withoutethn.ster"
+
+  # Primary Outcomes: COVID-19 hospital admission
+  SA1_02a_cr_create_population_af_oac_admitcovid:
+    run: stata-mp:latest analysis/SA1_02a_cr_create_population.do admitcovid SA1_af_oac
+    needs: [02aii_cr_create_population_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/SA1_02a_cr_create_population_admitcovid.log
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/analysis_dataset_admitcovid.dta"
+        data2: "output/oac_tempdata/sens_analysis_1/analysis_dataset_STSET_admitcovid.dta"
+
+  SA1_05a_an_models_af_oac_admitcovid:
+    run: stata-mp:latest analysis/05a_an_models.do admitcovid SA1_af_oac
+    needs: [SA1_02a_cr_create_population_af_oac_admitcovid, 05a_an_models_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/05a_an_models_admitcovid.log
+        table: "output/oac_tabfig/sens_analysis_1/table2_admitcovid.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/admitcovid_univar.ster"
+        data2: "output/oac_tempdata/sens_analysis_1/admitcovid_multivar1.ster"
+        data3: "output/oac_tempdata/sens_analysis_1/admitcovid_multivar2.ster"
+        data4: "output/oac_tempdata/sens_analysis_1/admitcovid_multivar3.ster"
+
+  SA1_06a_an_models_ethnicity_af_oac_admitcovid:
+    run: stata-mp:latest analysis/06a_an_models_ethnicity.do admitcovid SA1_af_oac
+    needs: [SA1_02a_cr_create_population_af_oac_admitcovid, 06a_an_models_ethnicity_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/06a_an_models_ethnicity_admitcovid.log
+        table: "output/oac_tabfig/sens_analysis_1/table3_admitcovid.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/admitcovid_univar_ethn.ster"
+        data2: "output/oac_tempdata/sens_analysis_1/admitcovid_multivar1_ethn.ster"
+        data3: "output/oac_tempdata/sens_analysis_1/admitcovid_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/sens_analysis_1/admitcovid_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/sens_analysis_1/admitcovid_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/sens_analysis_1/admitcovid_multivar3_withoutethn.ster"
+
+  # Exploratory Outcomes: COVID-19 test
+  SA1_02a_cr_create_population_af_oac_covidtest:
+    run: stata-mp:latest analysis/SA1_02a_cr_create_population.do covidtest SA1_af_oac
+    needs: [02aii_cr_create_population_af_oac_covidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/SA1_02a_cr_create_population_covidtest.log
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/analysis_dataset_covidtest.dta"
+        data2: "output/oac_tempdata/sens_analysis_1/analysis_dataset_STSET_covidtest.dta"
+
+  SA1_05a_an_models_af_oac_covidtest:
+    run: stata-mp:latest analysis/05a_an_models.do covidtest SA1_af_oac
+    needs: [SA1_02a_cr_create_population_af_oac_covidtest, 05a_an_models_af_oac_covidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/05a_an_models_covidtest.log
+        table: "output/oac_tabfig/sens_analysis_1/table2_covidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/covidtest_univar.ster"
+        data2: "output/oac_tempdata/sens_analysis_1/covidtest_multivar1.ster"
+        data3: "output/oac_tempdata/sens_analysis_1/covidtest_multivar2.ster"
+        data4: "output/oac_tempdata/sens_analysis_1/covidtest_multivar3.ster"
+
+  SA1_06a_an_models_ethnicity_af_oac_covidtest:
+    run: stata-mp:latest analysis/06a_an_models_ethnicity.do covidtest SA1_af_oac
+    needs: [SA1_02a_cr_create_population_af_oac_covidtest, 06a_an_models_ethnicity_af_oac_covidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/06a_an_models_ethnicity_covidtest.log
+        table: "output/oac_tabfig/sens_analysis_1/table3_covidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/covidtest_univar_ethn.ster"
+        data2: "output/oac_tempdata/sens_analysis_1/covidtest_multivar1_ethn.ster"
+        data3: "output/oac_tempdata/sens_analysis_1/covidtest_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/sens_analysis_1/covidtest_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/sens_analysis_1/covidtest_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/sens_analysis_1/covidtest_multivar3_withoutethn.ster"
+
+  # Exploratory Outcomes: Positive COVID test
+  SA1_02a_cr_create_population_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/SA1_02a_cr_create_population.do positivecovidtest SA1_af_oac
+    needs: [02aii_cr_create_population_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/SA1_02a_cr_create_population_positivecovidtest.log
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/analysis_dataset_positivecovidtest.dta"
+        data2: "output/oac_tempdata/sens_analysis_1/analysis_dataset_STSET_positivecovidtest.dta"
+
+  SA1_05a_an_models_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/05a_an_models.do positivecovidtest SA1_af_oac
+    needs: [SA1_02a_cr_create_population_af_oac_positivecovidtest, 05a_an_models_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/05a_an_models_positivecovidtest.log
+        table: "output/oac_tabfig/sens_analysis_1/table2_positivecovidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/positivecovidtest_univar.ster"
+        data2: "output/oac_tempdata/sens_analysis_1/positivecovidtest_multivar1.ster"
+        data3: "output/oac_tempdata/sens_analysis_1/positivecovidtest_multivar2.ster"
+        data4: "output/oac_tempdata/sens_analysis_1/positivecovidtest_multivar3.ster"
+
+  SA1_06a_an_models_ethnicity_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/06a_an_models_ethnicity.do positivecovidtest SA1_af_oac
+    needs: [SA1_02a_cr_create_population_af_oac_positivecovidtest, 06a_an_models_ethnicity_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/06a_an_models_ethnicity_positivecovidtest.log
+        table: "output/oac_tabfig/sens_analysis_1/table3_positivecovidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/positivecovidtest_univar_ethn.ster"
+        data2: "output/oac_tempdata/sens_analysis_1/positivecovidtest_multivar1_ethn.ster"
+        data3: "output/oac_tempdata/sens_analysis_1/positivecovidtest_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/sens_analysis_1/positivecovidtest_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/sens_analysis_1/positivecovidtest_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/sens_analysis_1/positivecovidtest_multivar3_withoutethn.ster"
+
+  SA1_12a_an_models_ethnicity_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/12a_an_models_ethnicity.do positivecovidtest SA1_af_oac
+    needs: [SA1_02a_cr_create_population_af_oac_positivecovidtest, 06a_an_models_ethnicity_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_1/12a_an_models_ethnicity_positivecovidtest.log
+        table: "output/oac_tabfig/sens_analysis_1/table9_positivecovidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_1/12a_positivecovidtest_multivar2_ethn.ster"
+        data2: "output/oac_tempdata/sens_analysis_1/12a_positivecovidtest_multivar2_withoutethn.ster"
+        data3: "output/oac_tempdata/sens_analysis_1/12a_positivecovidtest_multivar3_ethn.ster"
+        data4: "output/oac_tempdata/sens_analysis_1/12a_positivecovidtest_multivar3_withoutethn.ster"
+
+ # Sensitivity Analysis 2
+  # limit the study cohort to people who aged 55 
+
+  # Primary Outcomes: ONS COVID-19 death
+  SA2_02a_cr_create_population_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/SA2_02a_cr_create_population.do onscoviddeath SA2_af_oac
+    needs: [02aii_cr_create_population_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/SA2_02a_cr_create_population_onscoviddeath.log
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/analysis_dataset_onscoviddeath.dta"
+        data2: "output/oac_tempdata/sens_analysis_2/analysis_dataset_STSET_onscoviddeath.dta"
+
+  SA2_05a_an_models_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/05a_an_models.do onscoviddeath SA2_af_oac
+    needs: [SA2_02a_cr_create_population_af_oac_onscoviddeath, 05a_an_models_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/05a_an_models_onscoviddeath.log
+        table: "output/oac_tabfig/sens_analysis_2/table2_onscoviddeath.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/onscoviddeath_univar.ster"
+        data2: "output/oac_tempdata/sens_analysis_2/onscoviddeath_multivar1.ster"
+        data3: "output/oac_tempdata/sens_analysis_2/onscoviddeath_multivar2.ster"
+        data4: "output/oac_tempdata/sens_analysis_2/onscoviddeath_multivar3.ster"
+
+  SA2_11a_an_models_af_oac:
+    run: stata-mp:latest analysis/11a_an_models.do SA2_af_oac
+    needs: [SA2_02a_cr_create_population_af_oac_onscoviddeath, 05a_an_models_af_oac_onscoviddeath, SA2_02a_cr_create_population_af_oac_admitcovid, 05a_an_models_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/11a_an_models.log
+        table: "output/oac_tabfig/sens_analysis_2/table8.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/11a_admitcovid_multivar2.ster"
+        data2: "output/oac_tempdata/sens_analysis_2/11a_admitcovid_multivar3.ster"
+        data3: "output/oac_tempdata/sens_analysis_2/11a_onscoviddeath_multivar2.ster"
+        data4: "output/oac_tempdata/sens_analysis_2/11a_onscoviddeath_multivar3.ster"
+
+  SA2_06a_an_models_ethnicity_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/06a_an_models_ethnicity.do onscoviddeath SA2_af_oac
+    needs: [SA2_02a_cr_create_population_af_oac_onscoviddeath, 06a_an_models_ethnicity_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/06a_an_models_ethnicity_onscoviddeath.log
+        table: "output/oac_tabfig/sens_analysis_2/table3_onscoviddeath.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/onscoviddeath_univar_ethn.ster"
+        data2: "output/oac_tempdata/sens_analysis_2/onscoviddeath_multivar1_ethn.ster"
+        data3: "output/oac_tempdata/sens_analysis_2/onscoviddeath_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/sens_analysis_2/onscoviddeath_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/sens_analysis_2/onscoviddeath_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/sens_analysis_2/onscoviddeath_multivar3_withoutethn.ster"
+
+  # Primary Outcomes: COVID-19 hospital admission
+  SA2_02a_cr_create_population_af_oac_admitcovid:
+    run: stata-mp:latest analysis/SA2_02a_cr_create_population.do admitcovid SA2_af_oac
+    needs: [02aii_cr_create_population_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/SA2_02a_cr_create_population_admitcovid.log
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/analysis_dataset_admitcovid.dta"
+        data2: "output/oac_tempdata/sens_analysis_2/analysis_dataset_STSET_admitcovid.dta"
+
+  SA2_05a_an_models_af_oac_admitcovid:
+    run: stata-mp:latest analysis/05a_an_models.do admitcovid SA2_af_oac
+    needs: [SA2_02a_cr_create_population_af_oac_admitcovid, 05a_an_models_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/05a_an_models_admitcovid.log
+        table: "output/oac_tabfig/sens_analysis_2/table2_admitcovid.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/admitcovid_univar.ster"
+        data2: "output/oac_tempdata/sens_analysis_2/admitcovid_multivar1.ster"
+        data3: "output/oac_tempdata/sens_analysis_2/admitcovid_multivar2.ster"
+        data4: "output/oac_tempdata/sens_analysis_2/admitcovid_multivar3.ster"
+
+  SA2_06a_an_models_ethnicity_af_oac_admitcovid:
+    run: stata-mp:latest analysis/06a_an_models_ethnicity.do admitcovid SA2_af_oac
+    needs: [SA2_02a_cr_create_population_af_oac_admitcovid, 06a_an_models_ethnicity_af_oac_admitcovid]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/06a_an_models_ethnicity_admitcovid.log
+        table: "output/oac_tabfig/sens_analysis_2/table3_admitcovid.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/admitcovid_univar_ethn.ster"
+        data2: "output/oac_tempdata/sens_analysis_2/admitcovid_multivar1_ethn.ster"
+        data3: "output/oac_tempdata/sens_analysis_2/admitcovid_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/sens_analysis_2/admitcovid_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/sens_analysis_2/admitcovid_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/sens_analysis_2/admitcovid_multivar3_withoutethn.ster"
+
+  # Exploratory Outcomes: COVID-19 test
+  SA2_02a_cr_create_population_af_oac_covidtest:
+    run: stata-mp:latest analysis/SA2_02a_cr_create_population.do covidtest SA2_af_oac
+    needs: [02aii_cr_create_population_af_oac_covidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/SA2_02a_cr_create_population_covidtest.log
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/analysis_dataset_covidtest.dta"
+        data2: "output/oac_tempdata/sens_analysis_2/analysis_dataset_STSET_covidtest.dta"
+
+  SA2_05a_an_models_af_oac_covidtest:
+    run: stata-mp:latest analysis/05a_an_models.do covidtest SA2_af_oac
+    needs: [SA2_02a_cr_create_population_af_oac_covidtest, 05a_an_models_af_oac_covidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/05a_an_models_covidtest.log
+        table: "output/oac_tabfig/sens_analysis_2/table2_covidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/covidtest_univar.ster"
+        data2: "output/oac_tempdata/sens_analysis_2/covidtest_multivar1.ster"
+        data3: "output/oac_tempdata/sens_analysis_2/covidtest_multivar2.ster"
+        data4: "output/oac_tempdata/sens_analysis_2/covidtest_multivar3.ster"
+
+  SA2_06a_an_models_ethnicity_af_oac_covidtest:
+    run: stata-mp:latest analysis/06a_an_models_ethnicity.do covidtest SA2_af_oac
+    needs: [SA2_02a_cr_create_population_af_oac_covidtest, 06a_an_models_ethnicity_af_oac_covidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/06a_an_models_ethnicity_covidtest.log
+        table: "output/oac_tabfig/sens_analysis_2/table3_covidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/covidtest_univar_ethn.ster"
+        data2: "output/oac_tempdata/sens_analysis_2/covidtest_multivar1_ethn.ster"
+        data3: "output/oac_tempdata/sens_analysis_2/covidtest_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/sens_analysis_2/covidtest_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/sens_analysis_2/covidtest_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/sens_analysis_2/covidtest_multivar3_withoutethn.ster"
+
+  # Exploratory Outcomes: Positive COVID test
+  SA2_02a_cr_create_population_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/SA2_02a_cr_create_population.do positivecovidtest SA2_af_oac
+    needs: [02aii_cr_create_population_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/SA2_02a_cr_create_population_positivecovidtest.log
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/analysis_dataset_positivecovidtest.dta"
+        data2: "output/oac_tempdata/sens_analysis_2/analysis_dataset_STSET_positivecovidtest.dta"
+
+  SA2_05a_an_models_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/05a_an_models.do positivecovidtest SA2_af_oac
+    needs: [SA2_02a_cr_create_population_af_oac_positivecovidtest, 05a_an_models_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/05a_an_models_positivecovidtest.log
+        table: "output/oac_tabfig/sens_analysis_2/table2_positivecovidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/positivecovidtest_univar.ster"
+        data2: "output/oac_tempdata/sens_analysis_2/positivecovidtest_multivar1.ster"
+        data3: "output/oac_tempdata/sens_analysis_2/positivecovidtest_multivar2.ster"
+        data4: "output/oac_tempdata/sens_analysis_2/positivecovidtest_multivar3.ster"
+
+  SA2_06a_an_models_ethnicity_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/06a_an_models_ethnicity.do positivecovidtest SA2_af_oac
+    needs: [SA2_02a_cr_create_population_af_oac_positivecovidtest, 06a_an_models_ethnicity_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/06a_an_models_ethnicity_positivecovidtest.log
+        table: "output/oac_tabfig/sens_analysis_2/table3_positivecovidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/positivecovidtest_univar_ethn.ster"
+        data2: "output/oac_tempdata/sens_analysis_2/positivecovidtest_multivar1_ethn.ster"
+        data3: "output/oac_tempdata/sens_analysis_2/positivecovidtest_multivar2_ethn.ster"
+        data4: "output/oac_tempdata/sens_analysis_2/positivecovidtest_multivar2_withoutethn.ster"
+        data5: "output/oac_tempdata/sens_analysis_2/positivecovidtest_multivar3_ethn.ster"
+        data6: "output/oac_tempdata/sens_analysis_2/positivecovidtest_multivar3_withoutethn.ster"
+
+  SA2_12a_an_models_ethnicity_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/12a_an_models_ethnicity.do positivecovidtest SA2_af_oac
+    needs: [SA2_02a_cr_create_population_af_oac_positivecovidtest, 06a_an_models_ethnicity_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/sens_analysis_2/12a_an_models_ethnicity_positivecovidtest.log
+        table: "output/oac_tabfig/sens_analysis_2/table9_positivecovidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/sens_analysis_2/12a_positivecovidtest_multivar2_ethn.ster"
+        data2: "output/oac_tempdata/sens_analysis_2/12a_positivecovidtest_multivar2_withoutethn.ster"
+        data3: "output/oac_tempdata/sens_analysis_2/12a_positivecovidtest_multivar3_ethn.ster"
+        data4: "output/oac_tempdata/sens_analysis_2/12a_positivecovidtest_multivar3_withoutethn.ster"
+
+# Post-hoc Analysis 2
+# Compare AF treated people with non-treated people
+# Interaction with care home residence
+
+  10a_an_models_int_af_oac_positivecovidtest:
+    run: stata-mp:latest analysis/10a_an_models_interact.do positivecovidtest af_oac
+    needs: [02aii_cr_create_population_af_oac_positivecovidtest]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/10a_an_models_interact_positivecovidtest.log
+        table: "output/oac_tabfig/table7_positivecovidtest.txt"
+      highly_sensitive:
+        data1: "output/oac_tempdata/positivecovidtest_univar_int.ster"
+        data2: "output/oac_tempdata/positivecovidtest_multivar1_int.ster"
+        data3: "output/oac_tempdata/positivecovidtest_multivar2_int.ster"
+        data4: "output/oac_tempdata/positivecovidtest_multivar3_int.ster"
