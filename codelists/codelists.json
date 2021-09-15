@@ -1,3 +1,274 @@
 {
-  "files": {}
+  "files": {
+    "opensafely-atrial-fibrillation-clinical-finding.csv": {
+      "id": "opensafely/atrial-fibrillation-clinical-finding/2020-07-09",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/atrial-fibrillation-clinical-finding/2020-07-09/",
+      "downloaded_at": "2021-09-15 15:16:06.943713Z",
+      "sha": "edccc1a96570988b7e92a7a6e44cdee70a0ac179"
+    },
+    "opensafely-aplastic-anaemia.csv": {
+      "id": "opensafely/aplastic-anaemia/2020-04-24",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/aplastic-anaemia/2020-04-24/",
+      "downloaded_at": "2021-09-15 15:16:07.116031Z",
+      "sha": "bd34ff54f789dce031e3581006cc0befcee0b35c"
+    },
+    "opensafely-asplenia.csv": {
+      "id": "opensafely/asplenia/2020-06-02",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/asplenia/2020-06-02/",
+      "downloaded_at": "2021-09-15 15:16:07.304298Z",
+      "sha": "7599ea87a8f3d9d92389a728966d3077b00ac828"
+    },
+    "opensafely-cancer-excluding-lung-and-haematological.csv": {
+      "id": "opensafely/cancer-excluding-lung-and-haematological/2020-04-15",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/cancer-excluding-lung-and-haematological/2020-04-15/",
+      "downloaded_at": "2021-09-15 15:16:07.412943Z",
+      "sha": "8fa1164b587028c4bd5903289e0948642d399e56"
+    },
+    "opensafely-chronic-kidney-disease.csv": {
+      "id": "opensafely/chronic-kidney-disease/2020-04-14",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/chronic-kidney-disease/2020-04-14/",
+      "downloaded_at": "2021-09-15 15:16:07.538256Z",
+      "sha": "08e003f1222fe26781288b2eeff22db99780f202"
+    },
+    "opensafely-covid-identification.csv": {
+      "id": "opensafely/covid-identification/2020-06-03",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/covid-identification/2020-06-03/",
+      "downloaded_at": "2021-09-15 15:16:07.647820Z",
+      "sha": "124db6929439379b7dacd55ba26ae4f2ed9370bc"
+    },
+    "opensafely-current-copd.csv": {
+      "id": "opensafely/current-copd/2020-05-06",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/current-copd/2020-05-06/",
+      "downloaded_at": "2021-09-15 15:16:07.788013Z",
+      "sha": "bab838b50e256ceef8b9d2f6ca1132491e522bda"
+    },
+    "opensafely-diabetes.csv": {
+      "id": "opensafely/diabetes/2020-04-15",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/diabetes/2020-04-15/",
+      "downloaded_at": "2021-09-15 15:16:07.929210Z",
+      "sha": "605104b3e3770b7ab703d12943f5f15fa8eafe77"
+    },
+    "opensafely-ethnicity.csv": {
+      "id": "opensafely/ethnicity/2020-04-27",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/ethnicity/2020-04-27/",
+      "downloaded_at": "2021-09-15 15:16:08.038218Z",
+      "sha": "3d2f3998b71863a80b24d60f6f4282e14191ae13"
+    },
+    "opensafely-haematological-cancer.csv": {
+      "id": "opensafely/haematological-cancer/2020-04-15",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/haematological-cancer/2020-04-15/",
+      "downloaded_at": "2021-09-15 15:16:08.148040Z",
+      "sha": "59d65c613a7b984ba46eca8a74eedcc6320609fe"
+    },
+    "opensafely-heart-failure.csv": {
+      "id": "opensafely/heart-failure/2020-05-05",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/heart-failure/2020-05-05/",
+      "downloaded_at": "2021-09-15 15:16:08.288165Z",
+      "sha": "6139df4911534868bc5ade1ada53395606651064"
+    },
+    "opensafely-hiv.csv": {
+      "id": "opensafely/hiv/2020-07-13",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/hiv/2020-07-13/",
+      "downloaded_at": "2021-09-15 15:16:08.460184Z",
+      "sha": "c36a629c306e57081f702c3f30671364e452a3ee"
+    },
+    "opensafely-hypertension.csv": {
+      "id": "opensafely/hypertension/2020-04-28",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/hypertension/2020-04-28/",
+      "downloaded_at": "2021-09-15 15:16:08.600663Z",
+      "sha": "b0d7bbf6ea767366db458bc6f6d37955ae331cc7"
+    },
+    "opensafely-influenza-vaccination.csv": {
+      "id": "opensafely/influenza-vaccination/2020-05-12",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/influenza-vaccination/2020-05-12/",
+      "downloaded_at": "2021-09-15 15:16:08.741527Z",
+      "sha": "aa7cf32d4c16deb5a14fb3d68f0a2babfe431caf"
+    },
+    "opensafely-influenza-vaccination-clinical-codes-given.csv": {
+      "id": "opensafely/influenza-vaccination-clinical-codes-given/2020-05-21",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/influenza-vaccination-clinical-codes-given/2020-05-21/",
+      "downloaded_at": "2021-09-15 15:16:08.902957Z",
+      "sha": "c5e7b06fcd7a4f786bcf549e2c0c4ca944eba9b1"
+    },
+    "opensafely-influenza-vaccination-clinical-codes-not-given.csv": {
+      "id": "opensafely/influenza-vaccination-clinical-codes-not-given/2020-05-19",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/influenza-vaccination-clinical-codes-not-given/2020-05-19/",
+      "downloaded_at": "2021-09-15 15:16:09.053860Z",
+      "sha": "db68fd1368358f1ecbbc006c83419b3b47bcb82c"
+    },
+    "opensafely-lung-cancer.csv": {
+      "id": "opensafely/lung-cancer/2020-04-15",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/lung-cancer/2020-04-15/",
+      "downloaded_at": "2021-09-15 15:16:09.162920Z",
+      "sha": "645584a20f81c4d76187a2c305c904e8b8c63dbb"
+    },
+    "opensafely-myocardial-infarction.csv": {
+      "id": "opensafely/myocardial-infarction/2020-06-25",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/myocardial-infarction/2020-06-25/",
+      "downloaded_at": "2021-09-15 15:16:09.335433Z",
+      "sha": "5974fae45ad5741b19e3637f104d524a5b496579"
+    },
+    "opensafely-warfarin.csv": {
+      "id": "opensafely/warfarin/2020-10-05",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/warfarin/2020-10-05/",
+      "downloaded_at": "2021-09-15 15:16:09.491569Z",
+      "sha": "971d819a24d4c04bea3000390e9fb2f718fb3b22"
+    },
+    "opensafely-direct-acting-oral-anticoagulants-doac.csv": {
+      "id": "opensafely/direct-acting-oral-anticoagulants-doac/2020-10-05",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/direct-acting-oral-anticoagulants-doac/2020-10-05/",
+      "downloaded_at": "2021-09-15 15:16:09.663053Z",
+      "sha": "50f69d9c0bcb0e58aadb76fb4749d33f74f66253"
+    },
+    "opensafely-venous-thromboembolic-disease.csv": {
+      "id": "opensafely/venous-thromboembolic-disease/2020-09-14",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/venous-thromboembolic-disease/2020-09-14/",
+      "downloaded_at": "2021-09-15 15:16:09.818787Z",
+      "sha": "4ad6837024f72954807f996e1af75f700ed5dd38"
+    },
+    "opensafely-other-respiratory-conditions.csv": {
+      "id": "opensafely/other-respiratory-conditions/2020-07-21",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/other-respiratory-conditions/2020-07-21/",
+      "downloaded_at": "2021-09-15 15:16:09.975147Z",
+      "sha": "76cfb92e19e1b2b69953186daddc704458a6a2ab"
+    },
+    "opensafely-permanent-immunosuppression.csv": {
+      "id": "opensafely/permanent-immunosuppression/2020-06-02",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/permanent-immunosuppression/2020-06-02/",
+      "downloaded_at": "2021-09-15 15:16:10.116470Z",
+      "sha": "15dd49a1cbc8b8e9f4a9e05bbcbeb45b4e03106e"
+    },
+    "opensafely-proton-pump-inhibitors-ppi-oral.csv": {
+      "id": "opensafely/proton-pump-inhibitors-ppi-oral/2020-04-20",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/proton-pump-inhibitors-ppi-oral/2020-04-20/",
+      "downloaded_at": "2021-09-15 15:16:10.296379Z",
+      "sha": "4f324dd28aaa5a92a838fd44ea31ad03ab59ccc0"
+    },
+    "opensafely-smoking-clear.csv": {
+      "id": "opensafely/smoking-clear/2020-04-29",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/smoking-clear/2020-04-29/",
+      "downloaded_at": "2021-09-15 15:16:10.429214Z",
+      "sha": "0b5f3afe1db96dcce5141220e893a42ba2e5a8f7"
+    },
+    "opensafely-smoking-unclear.csv": {
+      "id": "opensafely/smoking-unclear/2020-04-29",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/smoking-unclear/2020-04-29/",
+      "downloaded_at": "2021-09-15 15:16:10.538198Z",
+      "sha": "d9dad3e9d9491f765863b2617114c521957b6db1"
+    },
+    "opensafely-sickle-cell-disease.csv": {
+      "id": "opensafely/sickle-cell-disease/2020-04-14",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/sickle-cell-disease/2020-04-14/",
+      "downloaded_at": "2021-09-15 15:16:10.710325Z",
+      "sha": "c30644d91b2c23e805f1ad6b723c30d1f4cc2191"
+    },
+    "opensafely-solid-organ-transplantation.csv": {
+      "id": "opensafely/solid-organ-transplantation/2020-04-10",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/solid-organ-transplantation/2020-04-10/",
+      "downloaded_at": "2021-09-15 15:16:10.866342Z",
+      "sha": "94178a9e19770b9c43c08fe42df6ab5ed0d9ec49"
+    },
+    "opensafely-stroke-updated.csv": {
+      "id": "opensafely/stroke-updated/2020-06-02",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/stroke-updated/2020-06-02/",
+      "downloaded_at": "2021-09-15 15:16:11.022647Z",
+      "sha": "e62a8af49698022220de1e1e438d6b6c611e666e"
+    },
+    "opensafely-temporary-immunosuppression.csv": {
+      "id": "opensafely/temporary-immunosuppression/2020-04-24",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/temporary-immunosuppression/2020-04-24/",
+      "downloaded_at": "2021-09-15 15:16:11.179192Z",
+      "sha": "99f6c0787e17e16430549a4cfb5084612faba2ac"
+    },
+    "opensafely-valvular-atrial-fibrillation.csv": {
+      "id": "opensafely/valvular-atrial-fibrillation/6cab4902",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/valvular-atrial-fibrillation/6cab4902/",
+      "downloaded_at": "2021-09-15 15:16:11.350429Z",
+      "sha": "2577dc875f853c964ec9b8cf2b6bb77ffb6fec1b"
+    },
+    "opensafely-antiphospholipid-syndrome.csv": {
+      "id": "opensafely/antiphospholipid-syndrome/3a8c6298",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/antiphospholipid-syndrome/3a8c6298/",
+      "downloaded_at": "2021-09-15 15:16:11.506623Z",
+      "sha": "5519b9437478f1d67ed7973eb0775d4811957068"
+    },
+    "opensafely-peripheral-arterial-disease.csv": {
+      "id": "opensafely/peripheral-arterial-disease/50e915d7",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/peripheral-arterial-disease/50e915d7/",
+      "downloaded_at": "2021-09-15 15:16:11.662873Z",
+      "sha": "c0477b035c7344af1285882903a28d40b7c8b6ef"
+    },
+    "opensafely-transient-ischaemic-attack.csv": {
+      "id": "opensafely/transient-ischaemic-attack/3526e2ac",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/transient-ischaemic-attack/3526e2ac/",
+      "downloaded_at": "2021-09-15 15:16:11.819303Z",
+      "sha": "f2c674bcb3dc20b7f32c3265d67ee5e53e3f871b"
+    },
+    "opensafely-low-molecular-weight-heparins-dmd.csv": {
+      "id": "opensafely/low-molecular-weight-heparins-dmd/480a2266",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/low-molecular-weight-heparins-dmd/480a2266/",
+      "downloaded_at": "2021-09-15 15:16:11.953954Z",
+      "sha": "de0a10673bb65158a38823dc112238b8fadd7fba"
+    },
+    "opensafely-antiplatelets.csv": {
+      "id": "opensafely/antiplatelets/15eb3bfc",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/antiplatelets/15eb3bfc/",
+      "downloaded_at": "2021-09-15 15:16:12.100604Z",
+      "sha": "711bf39052daafd23e0b89eb0a0c345d5c08c78e"
+    },
+    "opensafely-oestrogen-and-oestrogen-like-drugs.csv": {
+      "id": "opensafely/oestrogen-and-oestrogen-like-drugs/2efaaf31",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/oestrogen-and-oestrogen-like-drugs/2efaaf31/",
+      "downloaded_at": "2021-09-15 15:16:12.272953Z",
+      "sha": "ab8006392b4b1265818ae6879d88a70209e747cc"
+    },
+    "opensafely-hazardous-alcohol-drinking.csv": {
+      "id": "opensafely/hazardous-alcohol-drinking/6364474b",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/hazardous-alcohol-drinking/6364474b/",
+      "downloaded_at": "2021-09-15 15:16:12.444199Z",
+      "sha": "db9ef41fd8bbd00b01c2669a69812dbb884adea6"
+    },
+    "opensafely-nsaids-oral.csv": {
+      "id": "opensafely/nsaids-oral/2020-06-09",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/nsaids-oral/2020-06-09/",
+      "downloaded_at": "2021-09-15 15:16:12.616492Z",
+      "sha": "e33fa37c8037bf34f92a5ed4afc79cc7dfd334d5"
+    },
+    "opensafely-aspirin.csv": {
+      "id": "opensafely/aspirin/2020-07-01",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/aspirin/2020-07-01/",
+      "downloaded_at": "2021-09-15 15:16:12.741650Z",
+      "sha": "72a82a16aa14ad42d60544febcfe6556eb25db2a"
+    },
+    "opensafely-venous-thromboembolism-icd-10.csv": {
+      "id": "opensafely/venous-thromboembolism-icd-10/6e25de26",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/venous-thromboembolism-icd-10/6e25de26/",
+      "downloaded_at": "2021-09-15 15:16:12.912670Z",
+      "sha": "08da0c2bad7fdedb691ee6c3c364f11a4ecd3b0e"
+    },
+    "opensafely-stroke-secondary-care.csv": {
+      "id": "opensafely/stroke-secondary-care/2020-10-05",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/stroke-secondary-care/2020-10-05/",
+      "downloaded_at": "2021-09-15 15:16:13.100449Z",
+      "sha": "04aeb4b87dcf27651e34c287fdffe023bce38591"
+    },
+    "opensafely-cardiovascular-secondary-care.csv": {
+      "id": "opensafely/cardiovascular-secondary-care/20b63bd4",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/cardiovascular-secondary-care/20b63bd4/",
+      "downloaded_at": "2021-09-15 15:16:13.256819Z",
+      "sha": "7c956ed25484f8c03dae29823031c27f2802914a"
+    },
+    "opensafely-gastrointestinal-bleeding-icd-10.csv": {
+      "id": "opensafely/gastrointestinal-bleeding-icd-10/6b731e30",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/gastrointestinal-bleeding-icd-10/6b731e30/",
+      "downloaded_at": "2021-09-15 15:16:13.412793Z",
+      "sha": "f77da1d1f4f95a043011e47f267d8d8ba8230180"
+    },
+    "opensafely-dementia-complete.csv": {
+      "id": "opensafely/dementia-complete/48c76cf8",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/dementia-complete/48c76cf8/",
+      "downloaded_at": "2021-09-15 15:16:13.585086Z",
+      "sha": "b73c9363f19a9ee9f4407e34e95e11d3eeb615f4"
+    }
+  }
 }
