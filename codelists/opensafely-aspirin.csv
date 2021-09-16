@@ -1,0 +1,200 @@
+type,id,bnf_code,nm
+amp,65611000001104,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (The Boots Company Plc)
+amp,211011000001104,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (A A H Pharmaceuticals Ltd)
+amp,575111000001104,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (Sandoz Ltd)
+amp,722911000001109,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (Alliance Healthcare (Distribution) Ltd)
+amp,841411000001106,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (Kent Pharmaceuticals Ltd)
+amp,879911000001103,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (Greenfield Pharmaceuticals Ltd)
+amp,10287611000001106,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (Advanz Pharma)
+amp,10450411000001103,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (Arrow Generics Ltd)
+amp,10821811000001100,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (Teva UK Ltd)
+amp,13435711000001102,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (Mylan)
+amp,17786711000001101,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (Phoenix Healthcare Distribution Ltd)
+amp,21778211000001102,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (Waymade Healthcare Plc)
+amp,22611011000001100,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (DE Pharmaceuticals)
+amp,29771011000001108,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets (Sigma Pharmaceuticals Plc)
+amp,8252011000001109,0407010B0AAABAB,Aspirin 300mg/5ml oral solution (Special Order)
+amp,8252611000001102,0407010B0AAABAB,Aspirin 300mg/5ml oral suspension (Special Order)
+amp,420711000001101,0407010B0AAAEAE,Aspirin 300mg dispersible tablets (Aspar Pharmaceuticals Ltd)
+amp,442511000001105,0407010B0AAAEAE,Aspirin 300mg dispersible tablets (Actavis UK Ltd)
+amp,714511000001101,0407010B0AAAEAE,Aspirin 300mg dispersible tablets (Kent Pharmaceuticals Ltd)
+amp,785211000001100,0407010B0AAAEAE,Aspirin 300mg dispersible tablets (A A H Pharmaceuticals Ltd)
+amp,894511000001100,0407010B0AAAEAE,Aspirin 300mg dispersible tablets (Alliance Healthcare (Distribution) Ltd)
+amp,9789911000001102,0407010B0AAAEAE,Aspirin 300mg dispersible tablets (Almus Pharmaceuticals Ltd)
+amp,9827511000001106,0407010B0AAAEAE,Aspirin 300mg dispersible tablets (Lloyds Pharmacy Ltd)
+amp,13585411000001105,0407010B0AAAEAE,Aspirin 300mg dispersible tablets (DE Pharmaceuticals)
+amp,13662111000001104,0407010B0AAAEAE,Aspirin 300mg dispersible tablets (Numark Ltd)
+amp,15069811000001103,0407010B0AAAEAE,Aspirin 300mg dispersible tablets (Sigma Pharmaceuticals Plc)
+amp,21777011000001106,0407010B0AAAEAE,Aspirin 300mg dispersible tablets (Waymade Healthcare Plc)
+amp,29996411000001109,0407010B0AAAEAE,Aspirin 300mg dispersible tablets (Mawdsley-Brooks & Company Ltd)
+amp,311111000001108,0407010B0AAAFAF,Aspirin 300mg tablets (Kent Pharmaceuticals Ltd)
+amp,493511000001109,0407010B0AAAFAF,Aspirin 300mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,607311000001106,0407010B0AAAFAF,Aspirin 300mg tablets (Actavis UK Ltd)
+amp,621811000001104,0407010B0AAAFAF,Aspirin 300mg tablets (OBG Pharmaceuticals Ltd)
+amp,696811000001101,0407010B0AAAFAF,Aspirin 300mg tablets (Aspar Pharmaceuticals Ltd)
+amp,802811000001105,0407010B0AAAFAF,Aspirin 300mg tablets (A A H Pharmaceuticals Ltd)
+amp,5019911000001105,0407010B0AAAFAF,Aspirin 300mg tablets (Vantage)
+amp,7986611000001101,0407010B0AAAFAF,Aspirin 300mg tablets (Lloyds Pharmacy Ltd)
+amp,13379211000001100,0407010B0AAAFAF,Aspirin 300mg tablets (Wockhardt UK Ltd)
+amp,15067611000001107,0407010B0AAAFAF,Aspirin 300mg tablets (Sigma Pharmaceuticals Plc)
+amp,15985711000001102,0407010B0AAAFAF,Aspirin 300mg tablets (Bristol Laboratories Ltd)
+amp,17958611000001108,0407010B0AAAFAF,Aspirin 300mg caplets (The Boots Company Plc)
+amp,17962211000001101,0407010B0AAAFAF,Aspirin 300mg tablets (Almus Pharmaceuticals Ltd)
+amp,21777511000001103,0407010B0AAAFAF,Aspirin 300mg tablets (Waymade Healthcare Plc)
+amp,22611511000001108,0407010B0AAAFAF,Aspirin 300mg tablets (DE Pharmaceuticals)
+amp,24584511000001105,0407010B0AAAFAF,Aspirin 300mg tablets (Numark Ltd)
+amp,27167811000001103,0407010B0AAAFAF,Aspirin 300mg caplets (Wockhardt UK Ltd)
+amp,29995811000001103,0407010B0AAAFAF,Aspirin 300mg tablets (Mawdsley-Brooks & Company Ltd)
+amp,576411000001100,0407010B0AABCBC,Aspirin 150mg suppositories (Alliance Healthcare (Distribution) Ltd)
+amp,686211000001101,0407010B0AABCBC,Aspirin 150mg suppositories (Martindale Pharmaceuticals Ltd)
+amp,716511000001107,0407010B0AABCBC,Aspirin 150mg suppositories (A A H Pharmaceuticals Ltd)
+amp,22833911000001102,0407010B0AABCBC,Aspirin 150mg suppositories (Colorama Pharmaceuticals Ltd)
+amp,307411000001109,0407010B0AABEBE,Aspirin 300mg suppositories (A A H Pharmaceuticals Ltd)
+amp,443311000001109,0407010B0AABEBE,Aspirin 300mg suppositories (The Boots Company Plc)
+amp,679211000001103,0407010B0AABEBE,Aspirin 300mg suppositories (Alliance Healthcare (Distribution) Ltd)
+amp,893011000001106,0407010B0AABEBE,Aspirin 300mg suppositories (Martindale Pharmaceuticals Ltd)
+amp,22834111000001103,0407010B0AABEBE,Aspirin 300mg suppositories (Colorama Pharmaceuticals Ltd)
+amp,5135311000001107,0407010B0AABRBR,Aspirin powder (A A H Pharmaceuticals Ltd)
+amp,5135611000001102,0407010B0AABRBR,Aspirin powder (J M Loveridge Ltd)
+amp,901211000001107,0407010B0BBABA3,Caprin 300mg gastro-resistant tablets (Pinewood Healthcare)
+amp,183311000001101,0407010B0BDAAA3,Nu-Seals 300 gastro-resistant tablets (Alliance Pharmaceuticals Ltd)
+amp,4649111000001101,0407010B0BGABCC,Aspro Clear 300mg effervescent tablets (Bayer Plc)
+amp,4648711000001109,0407010B0BGACAG,Maximum Strength Aspro Clear 500mg effervescent tablets (Bayer Plc)
+amp,4906811000001106,0407010B0BJAAAN,Disprin Direct 300mg orodispersible tablets (Reckitt Benckiser Healthcare (UK) Ltd)
+amp,544911000001101,0407010B0BJABAE,Disprin 300mg dispersible tablets (Reckitt Benckiser Healthcare (UK) Ltd)
+amp,4532311000001104,0407010B0BJACCG,Disprin CV 300mg modified-release tablets (Reckitt Benckiser Healthcare (UK) Ltd)
+amp,4890011000001108,0407010B0BRAACB,Alka Rapid Crystals 500mg granules sachets (Bayer Plc)
+amp,30991911000001109,0407010B0BSAAAE,Boots Aspirin 300mg dispersible tablets (The Boots Company Plc)
+vmp,322225002,0407010B0AAA3A3,Aspirin 300mg gastro-resistant tablets
+vmp,8280511000001107,0407010B0AAABAB,Aspirin 300mg/5ml oral solution
+vmp,8280611000001106,0407010B0AAABAB,Aspirin 300mg/5ml oral suspension
+vmp,329526003,0407010B0AAAEAE,Aspirin 300mg dispersible tablets
+vmp,329525004,0407010B0AAAFAF,Aspirin 300mg tablets
+vmp,4650611000001100,0407010B0AAAGAG,Aspirin 500mg effervescent tablets sugar free
+vmp,4930911000001106,0407010B0AAANAN,Aspirin 300mg orodispersible tablets sugar free
+vmp,322233001,0407010B0AABCBC,Aspirin 150mg suppositories
+vmp,322232006,0407010B0AABEBE,Aspirin 300mg suppositories
+vmp,5145711000001107,0407010B0AABRBR,Aspirin powder
+vmp,4897611000001102,0407010B0AACBCB,Aspirin 500mg granules sachets sugar free
+vmp,4660611000001105,0407010B0AACCCC,Aspirin 300mg effervescent tablets sugar free
+vmp,4558011000001103,0407010B0AACGCG,Aspirin 300mg modified-release tablets
+amp,11980811000001100,0209000A0AAA4A4,Aspirin 62.5mg/5ml oral suspension (Special Order)
+amp,11981411000001106,0209000A0AAA4A4,Aspirin 62.5mg/5ml oral solution (Special Order)
+amp,11692711000001109,0209000A0AAA5A5,Aspirin 100mg/5ml oral suspension (Special Order)
+amp,11968411000001102,0209000A0AAA5A5,Aspirin 100mg/5ml oral solution (Special Order)
+amp,10063011000001103,0209000A0AAA7A7,Aspirin 75mg effervescent tablets (IVAX Pharmaceuticals UK Ltd)
+amp,10063211000001108,0209000A0AAA7A7,Aspirin 75mg effervescent tablets (A A H Pharmaceuticals Ltd)
+amp,33511000001106,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Teva UK Ltd)
+amp,163411000001106,0209000A0AAABAB,Aspirin 75mg dispersible tablets (IVAX Pharmaceuticals UK Ltd)
+amp,173911000001105,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Kent Pharmaceuticals Ltd)
+amp,594611000001102,0209000A0AAABAB,Aspirin 75mg dispersible tablets (The Boots Company Plc)
+amp,595211000001103,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Alliance Healthcare (Distribution) Ltd)
+amp,698811000001100,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Aspar Pharmaceuticals Ltd)
+amp,765111000001108,0209000A0AAABAB,Aspirin 75mg dispersible tablets (A A H Pharmaceuticals Ltd)
+amp,852711000001109,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Thornton & Ross Ltd)
+amp,916711000001109,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Actavis UK Ltd)
+amp,9789111000001100,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Almus Pharmaceuticals Ltd)
+amp,12430611000001107,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Lloyds Pharmacy Ltd)
+amp,13662311000001102,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Numark Ltd)
+amp,15069611000001102,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Sigma Pharmaceuticals Plc)
+amp,15985111000001103,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Bristol Laboratories Ltd)
+amp,17785711000001109,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Phoenix Healthcare Distribution Ltd)
+amp,19429611000001108,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Wockhardt UK Ltd)
+amp,21776611000001101,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Waymade Healthcare Plc)
+amp,22610611000001102,0209000A0AAABAB,Aspirin 75mg dispersible tablets (DE Pharmaceuticals)
+amp,29996011000001100,0209000A0AAABAB,Aspirin 75mg dispersible tablets (Mawdsley-Brooks & Company Ltd)
+amp,37148811000001109,0209000A0AAABAB,Aspirin 75mg dispersible tablets (M & A Pharmachem Ltd)
+amp,17423311000001108,0209000A0AAAJAJ,Aspirin 75mg tablets (Alissa Healthcare Research Ltd)
+amp,17629911000001105,0209000A0AAAJAJ,Aspirin 75mg tablets (Alliance Healthcare (Distribution) Ltd)
+amp,17879711000001102,0209000A0AAAJAJ,Aspirin 75mg tablets (A A H Pharmaceuticals Ltd)
+amp,18082911000001106,0209000A0AAAJAJ,Aspirin 75mg tablets (Phoenix Healthcare Distribution Ltd)
+amp,21777311000001109,0209000A0AAAJAJ,Aspirin 75mg tablets (Waymade Healthcare Plc)
+amp,22611811000001106,0209000A0AAAJAJ,Aspirin 75mg tablets (DE Pharmaceuticals)
+amp,29774911000001105,0209000A0AAAJAJ,Aspirin 75mg tablets (Sigma Pharmaceuticals Plc)
+amp,32394411000001100,0209000A0AAAJAJ,Aspirin 75mg tablets (Kent Pharmaceuticals Ltd)
+amp,34175711000001102,0209000A0AAAJAJ,Aspirin 75mg tablets (Accord Healthcare Ltd)
+amp,35841711000001101,0209000A0AAAJAJ,Aspirin 75mg tablets (Intrapharm Laboratories Ltd)
+amp,36492711000001106,0209000A0AAAJAJ,Aspirin 75mg tablets (Medreich Plc)
+amp,36611211000001105,0209000A0AAAJAJ,Aspirin 75mg tablets (Healthcare Pharma Ltd)
+amp,37570511000001103,0209000A0AAAJAJ,Aspirin 75mg tablets (NorthStar Healthcare Unlimited Company)
+amp,50611000001102,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Kent Pharmaceuticals Ltd)
+amp,138011000001102,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (A A H Pharmaceuticals Ltd)
+amp,281711000001100,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Actavis UK Ltd)
+amp,295211000001106,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Teva UK Ltd)
+amp,307211000001105,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Alliance Healthcare (Distribution) Ltd)
+amp,370411000001104,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Sterwin Medicines)
+amp,476711000001102,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Sandoz Ltd)
+amp,592811000001109,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (IVAX Pharmaceuticals UK Ltd)
+amp,795611000001102,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Mylan)
+amp,799411000001102,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (C P Pharmaceuticals Ltd)
+amp,844511000001107,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Greenfield Pharmaceuticals Ltd)
+amp,9790111000001106,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Almus Pharmaceuticals Ltd)
+amp,10450211000001102,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Arrow Generics Ltd)
+amp,12534311000001103,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Lloyds Pharmacy Ltd)
+amp,15967511000001101,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Zanza Specials International Ltd)
+amp,15985411000001108,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Bristol Laboratories Ltd)
+amp,16431611000001103,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Wockhardt UK Ltd)
+amp,17786111000001102,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Phoenix Healthcare Distribution Ltd)
+amp,21777711000001108,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Waymade Healthcare Plc)
+amp,22611211000001105,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (DE Pharmaceuticals)
+amp,29771211000001103,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Sigma Pharmaceuticals Plc)
+amp,29996711000001103,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Mawdsley-Brooks & Company Ltd)
+amp,37927211000001109,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets (Dexcel-Pharma Ltd)
+amp,30791611000001109,0209000A0AAATAT,Aspirin 25mg capsules (Special Order)
+amp,11973211000001103,0209000A0AABABA,Aspirin 25mg/5ml oral suspension (Special Order)
+amp,11977111000001101,0209000A0AABABA,Aspirin 25mg/5ml oral solution (Special Order)
+amp,11979511000001103,0209000A0AABBBB,Aspirin 40mg/5ml oral suspension (Special Order)
+amp,11980211000001101,0209000A0AABBBB,Aspirin 40mg/5ml oral solution (Special Order)
+amp,8253111000001104,0209000A0AABEBE,Aspirin 50mg/5ml oral solution (Special Order)
+amp,8253811000001106,0209000A0AABEBE,Aspirin 50mg/5ml oral suspension (Special Order)
+amp,11977711000001100,0209000A0AABFBF,Aspirin 30mg/5ml oral suspension (Special Order)
+amp,11978011000001101,0209000A0AABFBF,Aspirin 30mg/5ml oral solution (Special Order)
+amp,11982011000001105,0209000A0AABGBG,Aspirin 75mg/5ml oral suspension (Special Order)
+amp,11982511000001102,0209000A0AABGBG,Aspirin 75mg/5ml oral solution (Special Order)
+amp,11971811000001101,0209000A0AABHBH,Aspirin 15mg/5ml oral suspension (Special Order)
+amp,11972611000001106,0209000A0AABHBH,Aspirin 15mg/5ml oral solution (Special Order)
+amp,11978311000001103,0209000A0AABIBI,Aspirin 37.5mg/5ml oral suspension (Special Order)
+amp,11978911000001102,0209000A0AABIBI,Aspirin 37.5mg/5ml oral solution (Special Order)
+amp,8248411000001101,0209000A0AABJBJ,Aspirin 225mg/5ml oral solution (Special Order)
+amp,8249211000001105,0209000A0AABJBJ,Aspirin 225mg/5ml oral suspension (Special Order)
+amp,16096411000001107,0209000A0AACCCC,Aspirin 37.5mg oral powder sachets (Special Order)
+amp,13980411000001107,0209000A0AACDCD,Aspirin 40mg oral powder sachets (Special Order)
+amp,800511000001106,0209000A0BCAAAJ,Angettes 75 tablets (Bristol-Myers Squibb Pharmaceuticals Ltd)
+amp,414311000001102,0209000A0BFAAAK,Nu-Seals 75 gastro-resistant tablets (Alliance Pharmaceuticals Ltd)
+amp,636011000001100,0209000A0BGAAAB,PostMI 75 dispersible tablets (Ashbourne Pharmaceuticals Ltd)
+amp,38411000001101,0209000A0BGABAK,PostMI 75 EC tablets (Ashbourne Pharmaceuticals Ltd)
+amp,927411000001108,0209000A0BIAAAK,Caprin 75mg gastro-resistant tablets (Wockhardt UK Ltd)
+amp,473711000001109,0209000A0BKAAAK,Enprin 75mg gastro-resistant tablets (Galpharm International Ltd)
+amp,281311000001104,0209000A0BLAAAK,Micropirin 75mg gastro-resistant tablets (Dexcel-Pharma Ltd)
+amp,445511000001104,0209000A0BMAAAK,Gencardia 75mg gastro-resistant tablets (Genus Pharmaceuticals Ltd)
+amp,17221711000001107,0209000A0BNAAAB,Pure Health Aspirin 75mg dispersible tablets (Lexon (UK) Ltd)
+amp,20536811000001105,0209000A0BPAAAK,Boots Aspirin 75mg gastro-resistant tablets (The Boots Company Plc)
+amp,32968711000001107,0209000A0BQAAAB,Danamep 75mg dispersible tablets (Ecogen Europe Ltd)
+amp,35581511000001100,0209000A0BRAAAB,Mandaprin 75mg dispersible tablets (M & A Pharmachem Ltd)
+vmp,12013811000001103,0209000A0AAA4A4,Aspirin 62.5mg/5ml oral solution
+vmp,12013911000001108,0209000A0AAA4A4,Aspirin 62.5mg/5ml oral suspension
+vmp,11712811000001108,0209000A0AAA5A5,Aspirin 100mg/5ml oral suspension
+vmp,12012111000001104,0209000A0AAA5A5,Aspirin 100mg/5ml oral solution
+vmp,10064711000001104,0209000A0AAA7A7,Aspirin 75mg effervescent tablets
+vmp,319773006,0209000A0AAABAB,Aspirin 75mg dispersible tablets
+vmp,319775004,0209000A0AAAJAJ,Aspirin 75mg tablets
+vmp,319781007,0209000A0AAAKAK,Aspirin 75mg gastro-resistant tablets
+vmp,30798211000001103,0209000A0AAATAT,Aspirin 25mg capsules
+vmp,12012511000001108,0209000A0AABABA,Aspirin 25mg/5ml oral solution
+vmp,12012611000001107,0209000A0AABABA,Aspirin 25mg/5ml oral suspension
+vmp,12013511000001101,0209000A0AABBBB,Aspirin 40mg/5ml oral solution
+vmp,12013711000001106,0209000A0AABBBB,Aspirin 40mg/5ml oral suspension
+vmp,8280711000001102,0209000A0AABEBE,Aspirin 50mg/5ml oral solution
+vmp,8280811000001105,0209000A0AABEBE,Aspirin 50mg/5ml oral suspension
+vmp,12012911000001101,0209000A0AABFBF,Aspirin 30mg/5ml oral solution
+vmp,12013011000001109,0209000A0AABFBF,Aspirin 30mg/5ml oral suspension
+vmp,12014011000001106,0209000A0AABGBG,Aspirin 75mg/5ml oral solution
+vmp,12014111000001107,0209000A0AABGBG,Aspirin 75mg/5ml oral suspension
+vmp,12012211000001105,0209000A0AABHBH,Aspirin 15mg/5ml oral solution
+vmp,12012311000001102,0209000A0AABHBH,Aspirin 15mg/5ml oral suspension
+vmp,12013211000001104,0209000A0AABIBI,Aspirin 37.5mg/5ml oral solution
+vmp,12013311000001107,0209000A0AABIBI,Aspirin 37.5mg/5ml oral suspension
+vmp,8280211000001109,0209000A0AABJBJ,Aspirin 225mg/5ml oral solution
+vmp,8280311000001101,0209000A0AABJBJ,Aspirin 225mg/5ml oral suspension
+vmp,16100911000001108,0209000A0AACCCC,Aspirin 37.5mg oral powder sachets
+vmp,14012211000001103,0209000A0AACDCD,Aspirin 40mg oral powder sachets

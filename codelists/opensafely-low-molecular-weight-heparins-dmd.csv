@@ -1,0 +1,90 @@
+dmd_type,dmd_id,dmd_name,bnf_code
+VMP,38896011000001109,Enoxaparin sodium 20mg/0.2ml solution for injection pre-filled syringes,0208010D0AAAAAA
+VMP,36565711000001107,Enoxaparin sodium 40mg/0.4ml solution for injection pre-filled syringes,0208010D0AAABAB
+VMP,38895011000001100,Enoxaparin sodium 60mg/0.6ml solution for injection pre-filled syringes,0208010D0AAACAC
+VMP,38895111000001104,Enoxaparin sodium 80mg/0.8ml solution for injection pre-filled syringes,0208010D0AAADAD
+VMP,36564011000001106,Enoxaparin sodium 100mg/1ml solution for injection pre-filled syringes,0208010D0AAAEAE
+VMP,36563911000001108,Enoxaparin sodium 120mg/0.8ml solution for injection pre-filled syringes,0208010D0AAAFAF
+VMP,38895211000001105,Enoxaparin sodium 150mg/1ml solution for injection pre-filled syringes,0208010D0AAAGAG
+VMP,11509311000001109,Enoxaparin sodium 300mg/3ml solution for injection vials,0208010D0AAAHAH
+AMP,3826311000001101,Clexane 20mg/0.2ml solution for injection pre-filled syringes,0208010D0BBAAAA
+AMP,3825411000001104,Clexane 40mg/0.4ml solution for injection pre-filled syringes,0208010D0BBABAB
+AMP,4199811000001101,Clexane 60mg/0.6ml solution for injection pre-filled syringes,0208010D0BBACAC
+AMP,4199511000001104,Clexane 80mg/0.8ml solution for injection pre-filled syringes,0208010D0BBADAD
+AMP,4199111000001108,Clexane 100mg/1ml solution for injection pre-filled syringes,0208010D0BBAEAE
+AMP,4198711000001100,Clexane Forte 120mg/0.8ml solution for injection pre-filled syringes,0208010D0BBAFAF
+AMP,4198211000001107,Clexane Forte 150mg/1ml solution for injection pre-filled syringes,0208010D0BBAGAG
+AMP,11507011000001102,Clexane 300mg/3ml solution for injection multidose vials,0208010D0BBAHAH
+AMP,34699911000001109,Inhixa 20mg/0.2ml solution for injection pre-filled syringes,0208010D0BCAAAA
+AMP,34700211000001101,Inhixa 40mg/0.4ml solution for injection pre-filled syringes,0208010D0BCABAB
+AMP,34700511000001103,Inhixa 60mg/0.6ml solution for injection pre-filled syringes,0208010D0BCACAC
+AMP,34700811000001100,Inhixa 80mg/0.8ml solution for injection pre-filled syringes,0208010D0BCADAD
+AMP,34701011000001102,Inhixa 100mg/1ml solution for injection pre-filled syringes,0208010D0BCAEAE
+AMP,36784211000001100,Inhixa 120mg/0.8ml solution for injection pre-filled syringes,0208010D0BCAFAF
+AMP,36784411000001101,Inhixa 150mg/1ml solution for injection pre-filled syringes,0208010D0BCAGAG
+AMP,38232211000001100,Inhixa 300mg/3ml solution for injection multidose vials,0208010D0BCAHAH
+AMP,35083211000001102,Enoxaparin Becat 20mg/0.2ml solution for injection pre-filled syringes,0208010D0BDAAAA
+AMP,35083411000001103,Enoxaparin Becat 40mg/0.4ml solution for injection pre-filled syringes,0208010D0BDABAB
+AMP,35083611000001100,Enoxaparin Becat 60mg/0.6ml solution for injection pre-filled syringes,0208010D0BDACAC
+AMP,35083811000001101,Enoxaparin Becat 80mg/0.8ml solution for injection pre-filled syringes,0208010D0BDADAD
+AMP,35084011000001109,Enoxaparin Becat 100mg/1ml solution for injection pre-filled syringes,0208010D0BDAEAE
+AMP,35569511000001101,Arovi 20mg/0.2ml solution for injection pre-filled syringes,0208010D0BEAAAA
+AMP,35569011000001109,Arovi 40mg/0.4ml solution for injection pre-filled syringes,0208010D0BEABAB
+AMP,35568611000001106,Arovi 60mg/0.6ml solution for injection pre-filled syringes,0208010D0BEACAC
+AMP,35567911000001101,Arovi 80mg/0.8ml solution for injection pre-filled syringes,0208010D0BEADAD
+AMP,35566911000001104,Arovi 100mg/1ml solution for injection pre-filled syringes,0208010D0BEAEAE
+AMP,35559411000001106,Arovi 150mg/1ml solution for injection pre-filled syringes,0208010D0BEAFAG
+AMP,35559211000001107,Arovi 120mg/0.8ml solution for injection pre-filled syringes,0208010D0BEAGAF
+VMP,37084511000001100,"Dalteparin sodium 2,500units/0.2ml solution for injection pre-filled syringes",0208010L0AAAAAA
+VMP,36566011000001101,"Dalteparin sodium 5,000units/0.2ml solution for injection pre-filled syringes",0208010L0AAABAB
+VMP,36092911000001101,"Dalteparin sodium 10,000units/1ml solution for injection ampoules",0208010L0AAACAC
+VMP,36093111000001105,"Dalteparin sodium 10,000units/4ml solution for injection ampoules",0208010L0AAADAD
+VMP,36093311000001107,"Dalteparin sodium 100,000units/4ml solution for injection vials",0208010L0AAAEAE
+VMP,37084311000001106,"Dalteparin sodium 10,000units/0.4ml solution for injection pre-filled syringes",0208010L0AAAFAF
+VMP,36563811000001103,"Dalteparin sodium 12,500units/0.5ml solution for injection pre-filled syringes",0208010L0AAAGAG
+VMP,36564211000001101,"Dalteparin sodium 15,000units/0.6ml solution for injection pre-filled syringes",0208010L0AAAHAH
+VMP,37084411000001104,"Dalteparin sodium 18,000units/0.72ml solution for injection pre-filled syringes",0208010L0AAAIAI
+VMP,36093011000001109,"Dalteparin sodium 10,000units/1ml solution for injection pre-filled syringes",0208010L0AAAJAJ
+VMP,4865111000001103,"Dalteparin sodium 7,500units/0.3ml solution for injection pre-filled syringes",0208010L0AAAKAK
+AMP,3968911000001100,"Fragmin 10,000units/1ml solution for injection ampoules",0208010L0BBAAAC
+AMP,3723611000001103,"Fragmin 5,000units/0.2ml solution for injection pre-filled syringes",0208010L0BBABAB
+AMP,3840411000001109,"Fragmin 2,500units/0.2ml solution for injection pre-filled syringes",0208010L0BBACAA
+AMP,3969411000001100,"Fragmin 10,000units/4ml solution for injection ampoules",0208010L0BBADAD
+AMP,3970611000001100,"Fragmin 100,000units/4ml solution for injection vials",0208010L0BBAEAE
+AMP,3967611000001107,"Fragmin 10,000units/0.4ml solution for injection pre-filled syringes",0208010L0BBAFAF
+AMP,3838711000001100,"Fragmin 12,500units/0.5ml solution for injection pre-filled syringes",0208010L0BBAGAG
+AMP,3968311000001101,"Fragmin 15,000units/0.6ml solution for injection pre-filled syringes",0208010L0BBAHAH
+AMP,3968611000001106,"Fragmin 18,000units/0.72ml solution for injection pre-filled syringes",0208010L0BBAIAI
+AMP,3970311000001105,"Fragmin 10,000units/1ml solution for injection pre-filled syringes",0208010L0BBAJAJ
+AMP,4864211000001108,"Fragmin 7,500units/0.3ml solution for injection pre-filled syringes",0208010L0BBAKAK
+VMP,35919511000001105,"Tinzaparin sodium 40,000units/2ml solution for injection vials",0208010W0AAAFAF
+VMP,35918911000001106,"Tinzaparin sodium 14,000units/0.7ml solution for injection pre-filled syringes",0208010W0AAAIAI
+VMP,35919011000001102,"Tinzaparin sodium 18,000units/0.9ml solution for injection pre-filled syringes",0208010W0AAAJAJ
+VMP,35918811000001101,"Tinzaparin sodium 10,000units/0.5ml solution for injection pre-filled syringes",0208010W0AAAKAK
+VMP,35919311000001104,"Tinzaparin sodium 3,500units/0.35ml solution for injection pre-filled syringes",0208010W0AAALAL
+AMP,32688711000001105,"Tinzaparin sodium 3,500units/0.35ml solution for injection pre-filled syringes",0208010W0AAALAL
+AMP,31515811000001103,"Tinzaparin sodium 3,500units/0.35ml solution for injection pre-filled syringes",0208010W0AAALAL
+AMP,31222411000001106,"Tinzaparin sodium 3,500units/0.35ml solution for injection pre-filled syringes",0208010W0AAALAL
+VMP,35919411000001106,"Tinzaparin sodium 4,500units/0.45ml solution for injection pre-filled syringes",0208010W0AAAMAM
+AMP,32688911000001107,"Tinzaparin sodium 4,500units/0.45ml solution for injection pre-filled syringes",0208010W0AAAMAM
+AMP,31516911000001101,"Tinzaparin sodium 4,500units/0.45ml solution for injection pre-filled syringes",0208010W0AAAMAM
+AMP,31221711000001107,"Tinzaparin sodium 4,500units/0.45ml solution for injection pre-filled syringes",0208010W0AAAMAM
+VMP,35919211000001107,"Tinzaparin sodium 20,000units/2ml solution for injection vials",0208010W0AAANAN
+VMP,35919111000001101,"Tinzaparin sodium 2,500units/0.25ml solution for injection pre-filled syringes",0208010W0AAAQAQ
+AMP,32688511000001100,"Tinzaparin sodium 2,500units/0.25ml solution for injection pre-filled syringes",0208010W0AAAQAQ
+AMP,31515511000001101,"Tinzaparin sodium 2,500units/0.25ml solution for injection pre-filled syringes",0208010W0AAAQAQ
+AMP,31222811000001108,"Tinzaparin sodium 2,500units/0.25ml solution for injection pre-filled syringes",0208010W0AAAQAQ
+VMP,28566311000001109,"Tinzaparin sodium 16,000units/0.8ml solution for injection pre-filled syringes",0208010W0AAARAR
+VMP,28566111000001107,"Tinzaparin sodium 12,000units/0.6ml solution for injection pre-filled syringes",0208010W0AAASAS
+VMP,28566511000001103,"Tinzaparin sodium 8,000units/0.4ml solution for injection pre-filled syringes",0208010W0AAATAT
+AMP,4121711000001101,"Innohep 40,000units/2ml solution for injection vials",0208010W0BCACAF
+AMP,3919011000001105,"Innohep 14,000units/0.7ml solution for injection pre-filled syringes",0208010W0BCAEAI
+AMP,3920011000001106,"Innohep 18,000units/0.9ml solution for injection pre-filled syringes",0208010W0BCAFAJ
+AMP,3918011000001100,"Innohep 10,000units/0.5ml solution for injection pre-filled syringes",0208010W0BCAGAK
+AMP,3916311000001101,"Innohep 3,500units/0.35ml solution for injection pre-filled syringes",0208010W0BCAHAL
+AMP,4120611000001100,"Innohep 4,500units/0.45ml solution for injection pre-filled syringes",0208010W0BCAIAM
+AMP,4121311000001100,"Innohep 20,000units/2ml solution for injection vials",0208010W0BCAJAN
+AMP,4120211000001102,"Innohep 2,500units/0.25ml solution for injection pre-filled syringes",0208010W0BCAKAQ
+AMP,28498711000001103,"Innohep 16,000units/0.8ml solution for injection pre-filled syringes",0208010W0BCALAR
+AMP,28499911000001109,"Innohep 12,000units/0.6ml solution for injection pre-filled syringes",0208010W0BCAMAS
+AMP,28501011000001100,"Innohep 8,000units/0.4ml solution for injection pre-filled syringes",0208010W0BCANAT
