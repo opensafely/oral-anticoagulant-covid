@@ -67,6 +67,7 @@ foreach i in warfarin_last_four_months  ///
 * Check date ranges for all comorbidities/ medications 
 foreach var of varlist  ckd     					///			
 						hypertension				///
+						dementia					///
 						other_respiratory 			///
 						heart_failure				///
 						copd 						///
