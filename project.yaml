@@ -436,6 +436,26 @@ actions:
       highly_sensitive:
         data: "output/oac_match_tempdata/cr_dataset_af.dta"
 
+  # Primary Outcomes: ONS COVID-19 death
+  02c_cr_create_population_af_match_onscoviddeath:
+    run: stata-mp:latest analysis/02c_cr_create_population.do onscoviddeath af_match matched_cases_af_gen_pop
+    needs: [create_dataset_af_match, matching, 02ai_exportfile_matching]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_match_log/02c_cr_create_population_onscoviddeath.log
+      highly_sensitive:
+        data1: "output/oac_match_tempdata/matched_control_onscoviddeath.dta"
+        data2: "output/oac_match_tempdata/analysis_dataset_onscoviddeath.dta"
+        data3: "output/oac_match_tempdata/analysis_dataset_STSET_onscoviddeath.dta"
+  
+  04_an_descriptive_table_af_match_onscoviddeath:
+    run: stata-mp:latest analysis/04_an_descriptive_table.do onscoviddeath af_match
+    needs: [02c_cr_create_population_af_match_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_match_log/04_an_descriptive_table_onscoviddeath.log
+        table: "output/oac_match_tabfig/table1_onscoviddeath.txt"
+
   # Sensitivity Analysis 1
   # Remove people with antiplatelets
 
