@@ -605,6 +605,7 @@ label var eskf_exclusion                "End stage kidney failure/kidney transpl
 *Outcome/right censoring related variables
 label var died_date_ons                 "ONS death date (any cause)"
 label var died_ons_covid_flag_any       "Binary indicator: ONS any covid"
+label var suspected_died_ons_covid_flag_any "Binary indicator: ONS any suspected covid"
 label var died_ons_covid_flag_underlying "Binary indicator: ONS underlying covid (subset of any)"
 label var dereg_date                     "Deregistration date from GP"
 label var covid_admission_date           "Date of hospital admission due to COVID"
