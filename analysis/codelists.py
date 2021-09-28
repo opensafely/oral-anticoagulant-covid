@@ -10,6 +10,9 @@ covid_identification = codelist_from_csv(
     column="icd10_code",
 )
 
+# SUSPECTED COVID-19
+suspected_covid = codelist(["U072"], system="icd10")
+
 # DEMOGRAPHIC CODELIST
 ethnicity_codes = codelist_from_csv(
     "codelists/opensafely-ethnicity.csv",
