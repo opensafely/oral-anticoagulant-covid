@@ -187,6 +187,10 @@ died_date_onscovid>=enter_date & died_date_onscovid<=stime_onscoviddeath
 
 replace onscoviddeath = 0 if onscoviddeath == .
 
+* Generate a variable to count the number of suspected COVID-19 death
+gen suspect_onscoviddeath = 1 if onscoviddeath == 1 & suspected_died_ons_covid == 1
+replace suspect_onscoviddeath = 0 if suspect_onscoviddeath == .
+
 * Hospital admission due to COVID-19
 gen admitcovid = 1 if covid_admission_primary_date!=. & ///
 covid_admission_primary_date>=enter_date & covid_admission_primary_date<=stime_admitcovid

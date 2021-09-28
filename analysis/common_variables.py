@@ -49,6 +49,13 @@ common_variables = dict(
         match_only_underlying_cause=True,
         return_expectations={"date": {"earliest": "2020-03-01"}},
     ),
+    # Suspected COVID-19
+    suspected_died_ons_covid=patients.with_these_codes_on_death_certificate(
+        suspected_covid,
+        on_or_after="2020-03-01",
+        match_only_underlying_cause=False,
+        return_expectations={"date": {"earliest": "2020-03-01"}},
+    ),
     died_date_ons=patients.died_from_any_cause(
         on_or_after="2020-03-01",
         returning="date_of_death",
