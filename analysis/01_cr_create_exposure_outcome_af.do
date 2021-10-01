@@ -261,6 +261,7 @@ label var enter_date					"Date of study entry"
 label var onscoviddeathcensor_date 		"Date of admin censoring for ONS deaths"
 
 label var onscoviddeath					"Failure/censoring indicator for outcome: ONS covid death"
+label var suspect_onscoviddeath			"Failure/censoring indicator for outcome: suspected ONS covid death"
 label var died_date_onscovid 			"Date of ONS Death (Covid-19 only)"
 label var admitcovid    			    "Failure/censoring indicator for outcome: SUS covid"
 label var covid_admission_primary_date  "Date of hospital admission due to covid as primary dx"
