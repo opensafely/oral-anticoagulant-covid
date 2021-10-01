@@ -217,6 +217,7 @@ foreach varlist in  hypertension		///
 					hazardous_alcohol	///
 					suspect_onscoviddeath ///
 					onscoviddeath         ///
+					care_home_residence   ///
 					{
 tabulatevariable, variable(`varlist') min(1) max(1)
 }
