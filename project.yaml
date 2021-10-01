@@ -142,7 +142,7 @@ actions:
         table2: "output/oac_tabfig/table6_onscoviddeath.txt"
 
   09a_an_models_plot_af_oac_onscoviddeath:
-    run: stata-mp:latest analysis/09a_an_models_plot.do onscoviddeath af_oac 3 0.5 0.1
+    run: stata-mp:latest analysis/09a_an_models_plot.do onscoviddeath af_oac 3 1 0.1
     needs: [02aii_cr_create_population_af_oac_onscoviddeath]
     outputs:
       moderately_sensitive:
