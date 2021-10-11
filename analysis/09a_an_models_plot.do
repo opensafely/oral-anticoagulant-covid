@@ -59,6 +59,10 @@ list _contrast* if timevar==`tmax', noobs ab(16)
 for var _at1 _at2 _at1_lci _at1_uci _at2_lci _at2_uci ///
 _contrast2_1 _contrast2_1_lci _contrast2_1_uci: replace X=100*X
 
+* Check the max / outlier
+su _at1, detail
+su _at2, detail
+
 * Plot the survival curves
 twoway  (rarea _at1_lci _at1_uci timevar, color(blue%25)) ///
                 (rarea _at2_lci _at2_uci timevar, color(red%25)) ///
