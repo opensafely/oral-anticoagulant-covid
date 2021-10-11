@@ -68,6 +68,9 @@ su _at2, detail
 su _at2_lci, detail
 su _at2_uci, detail
 
+* Check at which timepoint for _at1_lci > 1
+list timevar if _at1_lci > 1
+
 * Plot the survival curves
 twoway  (rarea _at1_lci _at1_uci timevar, color(blue%25)) ///
                 (rarea _at2_lci _at2_uci timevar, color(red%25)) ///
