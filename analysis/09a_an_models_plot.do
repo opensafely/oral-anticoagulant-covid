@@ -61,7 +61,12 @@ _contrast2_1 _contrast2_1_lci _contrast2_1_uci: replace X=100*X
 
 * Check the max / outlier
 su _at1, detail
+su _at1_lci, detail
+su _at1_uci, detail
+
 su _at2, detail
+su _at2_lci, detail
+su _at2_uci, detail
 
 * Plot the survival curves
 twoway  (rarea _at1_lci _at1_uci timevar, color(blue%25)) ///
