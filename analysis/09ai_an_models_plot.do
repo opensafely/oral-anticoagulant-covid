@@ -45,7 +45,7 @@ clonevar diab_control = diabcat
 recode diab_control 4=3
 
 * Fit the stpm2 model 
-xi i.exposure i.male `fullvarlist'
+xi i.exposure i.male $`fullvarlist'
     
 stpm2 _I* age1 age2 age3, scale(hazard) df(`df') eform nolog
 
