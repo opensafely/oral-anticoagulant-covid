@@ -1,12 +1,14 @@
 /*==============================================================================
-DO FILE NAME:			09a_an_models_plot
+DO FILE NAME:			09ai_an_models_plot
 PROJECT:				Anticoagulant in COVID-19 
 AUTHOR:					A Wong
-DATE: 					2 Nov 2020 					
-DESCRIPTION OF FILE:	program 09
+DATE: 					18 Oct 2021				
+DESCRIPTION OF FILE:	program 09ai
 						Using fully adjusted model
 						Objective 1: comparing treated and untreated people 
 						with atrial fibrillation
+						only for COVID-19 Death outcome because there was an outlier on the graphs
+						(details in 09a_an_models_plot.log)
 DATASETS USED:			data in memory ($tempdir/analysis_dataset_STSET_outcome)
 
 DATASETS CREATED: 		none
@@ -31,7 +33,7 @@ do `c(pwd)'/analysis/global_`global_option'.do
 
 * Open a log file
 capture log close
-log using $logdir/09a_an_models_plot_`outcome', replace t
+log using $logdir/09ai_an_models_plot_`outcome', replace t
 
 * Open Stata dataset
 use $tempdir/analysis_dataset_STSET_`outcome', clear
@@ -66,6 +68,21 @@ list _contrast* if timevar==`tmax', noobs ab(16)
 for var _at1 _at2 _at1_lci _at1_uci _at2_lci _at2_uci ///
 _contrast2_1 _contrast2_1_lci _contrast2_1_uci: replace X=100*X
 
+* Check the max / outlier
+su _at1, detail
+su _at1_lci, detail
+su _at1_uci, detail
+
+su _at2, detail
+su _at2_lci, detail
+su _at2_uci, detail
+
+* Check at which timepoint for _at1_lci > 1
+list timevar if _at1_lci > 1 & timevar !=.
+
+* drop the outlier
+drop if timevar==0
+
 * Plot the survival curves
 twoway  (rarea _at1_lci _at1_uci timevar, color(blue%25)) ///
                 (rarea _at2_lci _at2_uci timevar, color(red%25)) ///
@@ -78,7 +95,7 @@ twoway  (rarea _at1_lci _at1_uci timevar, color(blue%25)) ///
                  xtitle("Days from 1 March 2020") ///
 				 saving(adj_curves_`outcome' , replace)
 				 
-graph export "$tabfigdir/adj_curves_`outcome'.svg", as(svg) replace
+graph export "$tabfigdir/adj_curves_`outcome'_new.svg", as(svg) replace
 
 * Close window 
 graph close
@@ -95,7 +112,7 @@ twoway  (rarea _contrast2_1_lci _contrast2_1_uci timevar, color(red%25)) ///
                  xtitle("Days from 1 March 2020") ///
 				 saving(diff_curves_`outcome' , replace)
 				 
-graph export "$tabfigdir/diff_curves_`outcome'.svg", as(svg) replace
+graph export "$tabfigdir/diff_curves_`outcome'_new.svg", as(svg) replace
 
 * Close window 
 graph close
