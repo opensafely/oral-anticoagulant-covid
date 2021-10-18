@@ -81,7 +81,7 @@ su _at2_uci, detail
 list timevar if _at1_lci > 1 & timevar !=.
 
 * drop the outlier
-drop if timevar==0
+drop if timevar==1
 
 * Plot the survival curves
 twoway  (rarea _at1_lci _at1_uci timevar, color(blue%25)) ///
