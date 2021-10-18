@@ -25,6 +25,8 @@ local cum_ymax `4'
 
 local yscale `5'
 
+local fullvarlist `6'
+
 do `c(pwd)'/analysis/global_`global_option'.do
 
 * Open a log file
@@ -35,8 +37,13 @@ log using $logdir/09a_an_models_plot_`outcome', replace t
 use $tempdir/analysis_dataset_STSET_`outcome', clear
 
 /*==============================================================================*/
+* Create new diabetes variable, group Diabetes, no hba1c with uncontrolled diabetes
+clonevar diab_control = diabcat
+
+recode diab_control 4=3
+
 * Fit the stpm2 model 
-xi i.exposure i.male $fullvarlist
+xi i.exposure i.male `fullvarlist'
     
 stpm2 _I* age1 age2 age3, scale(hazard) df(`df') eform nolog
 
@@ -58,18 +65,6 @@ list _contrast* if timevar==`tmax', noobs ab(16)
 * Convert them to be expressed in %
 for var _at1 _at2 _at1_lci _at1_uci _at2_lci _at2_uci ///
 _contrast2_1 _contrast2_1_lci _contrast2_1_uci: replace X=100*X
-
-* Check the max / outlier
-su _at1, detail
-su _at1_lci, detail
-su _at1_uci, detail
-
-su _at2, detail
-su _at2_lci, detail
-su _at2_uci, detail
-
-* Check at which timepoint for _at1_lci > 1
-list timevar if _at1_lci > 1
 
 * Plot the survival curves
 twoway  (rarea _at1_lci _at1_uci timevar, color(blue%25)) ///
