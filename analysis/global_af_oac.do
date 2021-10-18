@@ -63,6 +63,48 @@ global fullvarlist i.imd 					///
 				   i.ae_attendance_last_year ///
 				   i.gp_consult 			
 
+				   
+global coviddeathfullvarlist i.imd 			///
+				   i.obese4cat			    ///
+				   i.smoke_nomiss		    ///
+				   i.diab_control			///
+				   i.myocardial_infarct		///
+				   i.pad					///
+				   i.hypertension			///		
+				   i.heart_failure			///		
+				   i.vte                    ///	
+				   i.antiplatelet           ///
+				   i.flu_vaccine 			///
+				   i.ckd	 				///		
+				   i.copd                   ///
+				   i.other_respiratory      ///
+				   i.immunodef_any		 	///
+				   i.cancer     		    ///
+				   i.dementia				///
+				   i.ae_attendance_last_year ///
+				   i.gp_consult 			
+				   
+global admitfullvarlist i.imd 				///
+				   i.obese4cat			    ///
+				   i.smoke_nomiss		    ///
+				   i.diab_control			///
+				   i.myocardial_infarct		///
+				   i.pad					///
+				   i.hypertension			///		
+				   i.heart_failure			///		
+				   i.stroke_tia             ///
+				   i.vte                    ///
+				   i.oestrogen 				///	
+				   i.antiplatelet           ///
+				   i.flu_vaccine 			///
+				   i.ckd	 				///		
+				   i.copd                   ///
+				   i.other_respiratory      ///
+				   i.immunodef_any		 	///
+				   i.cancer     		    ///
+				   i.dementia				///
+				   i.ae_attendance_last_year ///
+				   i.gp_consult 			
 /* SET FU DATES===============================================================*/ 
 * Censoring dates for each outcome
 * https://github.com/opensafely/rapid-reports/blob/master/notebooks/latest-dates.ipynb
