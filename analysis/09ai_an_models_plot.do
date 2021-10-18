@@ -95,7 +95,7 @@ twoway  (rarea _at1_lci _at1_uci timevar, color(blue%25)) ///
                  xtitle("Days from 1 March 2020") ///
 				 saving(adj_curves_`outcome' , replace)
 				 
-graph export "$tabfigdir/adj_curves_`outcome'.svg", as(svg) replace
+graph export "$tabfigdir/adj_curves_`outcome'_new.svg", as(svg) replace
 
 * Close window 
 graph close
@@ -112,7 +112,7 @@ twoway  (rarea _contrast2_1_lci _contrast2_1_uci timevar, color(red%25)) ///
                  xtitle("Days from 1 March 2020") ///
 				 saving(diff_curves_`outcome' , replace)
 				 
-graph export "$tabfigdir/diff_curves_`outcome'.svg", as(svg) replace
+graph export "$tabfigdir/diff_curves_`outcome'_new.svg", as(svg) replace
 
 * Close window 
 graph close

@@ -141,6 +141,24 @@ actions:
         fig10: "output/oac_tabfig/onscoviddeath_schoenplot4_completecase.svg"
         table2: "output/oac_tabfig/table6_onscoviddeath.txt"
 
+  09a_an_models_plot_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/09a_an_models_plot.do onscoviddeath af_oac 3 1 0.1 coviddeathfullvarlist
+    needs: [02aii_cr_create_population_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/09a_an_models_plot_onscoviddeath.log
+        fig1: "output/oac_tabfig/adj_curves_onscoviddeath.svg"
+        fig2: "output/oac_tabfig/diff_curves_onscoviddeath.svg"
+
+  09ai_an_models_plot_af_oac_onscoviddeath:
+    run: stata-mp:latest analysis/09ai_an_models_plot.do onscoviddeath af_oac 3 1 0.1 coviddeathfullvarlist
+    needs: [02aii_cr_create_population_af_oac_onscoviddeath]
+    outputs:
+      moderately_sensitive:
+        log: output/oac_log/09ai_an_models_plot_onscoviddeath.log
+        fig1: "output/oac_tabfig/adj_curves_onscoviddeath_new.svg"
+        fig2: "output/oac_tabfig/diff_curves_onscoviddeath_new.svg"
+
   # Primary Outcomes: COVID-19 hospital admission
   02aii_cr_create_population_af_oac_admitcovid:
     run: stata-mp:latest analysis/02aii_cr_create_population.do admitcovid af_oac
