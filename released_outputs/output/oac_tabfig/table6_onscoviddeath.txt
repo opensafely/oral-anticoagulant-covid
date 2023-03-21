@@ -1,0 +1,4 @@
+Table 6: Testing the PH assumption - onscoviddeath - Obj_1_AF Population in complete case cohort
+	Univariable	Age/Sex Adjusted	DAG Adjusted with ethnicity	DAG Adjusted without ethnicity	Fully Adjusted with ethnicity	Fully Adjusted without ethnicity	
+	p-value	p-value	p-value	p-value	p-value	p-value	
+Treatment Exposure	.028	.026	.394	.365	.433	.472

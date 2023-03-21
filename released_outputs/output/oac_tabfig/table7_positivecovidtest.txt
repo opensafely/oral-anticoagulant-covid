@@ -1,0 +1,11 @@
+Table 7: Current anticoagulant use and positivecovidtest, Care home Interaction - Obj_1_AF Population
+	Number of events	Total person-weeks	Rate per 1,000	Univariable			Age/Sex Adjusted			DAG Adjusted			Fully Adjusted			
+				HR	95% CI	p (interaction)	HR	95% CI	p (interaction)	HR	95% CI	p (interaction)	HR	95% CI	p (interaction)	
+care_home_residence						.491			.352			.416			.716
+0
+non-use	132	    533212	0.25	1.00 (ref)			1.00 (ref)			1.00 (ref)			1.00 (ref)
+current use	300	   1561506	0.19	0.78	0.63 - 0.95		0.80	0.65 - 0.98		0.78	0.62 - 0.96		0.72	0.57 - 0.91	
+1
+non-use	19	      4883	3.89	1.00 (ref)			1.00 (ref)			1.00 (ref)			1.00 (ref)
+current use	29	      7884	3.68	0.96	0.54 - 1.72		1.06	0.60 - 1.90		1.00	0.56 - 1.79		0.62	0.29 - 1.33	
+

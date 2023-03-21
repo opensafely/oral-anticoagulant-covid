@@ -1,0 +1,7 @@
+Table 3: Association between current anticoagulant use and admitcovid - Obj_1_AF Population, restrict to known ethnicity
+	Number of events	Total person-weeks	Rate per 1,000	Univariable		Age/Sex Adjusted		DAG Adjusted with ethnicity		DAG Adjusted without ethnicity		Fully Adjusted with ethnicity		Fully Adjusted without ethnicity		
+				HR	95% CI	HR	95% CI	HR	95% CI	HR	95% CI	HR	95% CI	HR	95% CI
+Main Analysis
+non-use	50	    409823	0.12	1.00 (ref)		1.00 (ref)		1.00 (ref)		1.00 (ref)		1.00 (ref)		1.00 (ref)
+current use	118	   1189876	0.10	0.82	0.59 - 1.13	0.80	0.57 - 1.11	0.76	0.53 - 1.09	0.76	0.53 - 1.09	0.67	0.45 - 0.99	0.69	0.47 - 1.02
+

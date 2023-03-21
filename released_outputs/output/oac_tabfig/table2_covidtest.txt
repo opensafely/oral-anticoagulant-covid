@@ -1,0 +1,7 @@
+Table 2: Association between current anticoagulant use and covidtest - Obj_1_AF Population
+	Number of events	Total person-weeks	Rate per 1,000	Univariable		Age/Sex Adjusted		DAG Adjusted		Fully adjusted		
+				HR	95% CI	HR	95% CI	HR	95% CI	HR	95% CI
+Main Analysis
+non-use	2941	    507282	5.80	1.00 (ref)		1.00 (ref)		1.00 (ref)		1.00 (ref)
+current use	8249	   1486790	5.55	0.95	0.91 - 0.99	0.98	0.94 - 1.03	0.99	0.95 - 1.04	0.96	0.91 - 1.00
+

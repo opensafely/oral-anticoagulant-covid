@@ -1,0 +1,4 @@
+Table 5: Testing the PH assumption - covidtest - Obj_1_AF Population in Full cohort
+	Univariable	Age/Sex Adjusted	DAG Adjusted	Fully Adjusted	
+	p-value	p-value	p-value	p-value	
+Treatment Exposure	0	0	0	0

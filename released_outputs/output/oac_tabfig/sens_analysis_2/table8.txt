@@ -1,0 +1,7 @@
+Table 8: Association between current anticoagulant use and different outcomes
+	admitcovid - DAG adjusted		admitcovid - Fully adjusted		Covid death - DAG Adjusted		Covid death - Fully adjusted		
+				HR	95% CI	HR	95% CI	HR	95% CI	HR	95% CI
+Main Analysis
+non-use	1.00 (ref)		1.00 (ref)		1.00 (ref)		1.00 (ref)
+current use	0.84	0.61 - 1.16	0.78	0.55 - 1.09	0.75	0.53 - 1.05	0.66	0.45 - 0.97
+
